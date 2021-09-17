@@ -1,0 +1,44 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  margin: 1em auto;
+  margin-inline: 1rem;
+}
+.box_section {
+  display: flex;
+}
+.record_bar {
+  flex-shrink: 0;
+}
+.section_name {
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #474747;
+}
+.section_text {
+  font-family: Noto Sans KR;
+  color: #474747;
+  font-size: 1rem;
+}
+.record_button {
+  display: absolute;
+  /* text-align: right; */
+  /* align-items: right; */
+  margin-left: auto;
+  margin-right: 3.8rem;
+  /* right: 5%; */
+  /* position: absolute; */
+  /* align-items: ; */
+  /* margin-left: auto;
+  margin-right: 0.8rem; */
+  width: 2rem;
+  /* left: 72%; */
+  /* right: 10%; */
+  height: 2rem;
+}
+.button {
+  all: unset;
+  margin-left: 1rem;
+}

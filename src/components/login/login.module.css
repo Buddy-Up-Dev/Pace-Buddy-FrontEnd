@@ -1,0 +1,23 @@
+.write {
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 12px;
+    margin-left: 5%;
+    color: #474747;
+}
+
+.Logincharter{
+    display: block;
+    text-align: center;
+    /* margin-left: 11.5%; */
+    margin-top: 42%;
+    margin-bottom: 20%;
+}
+
+.location{
+    display: block;
+    text-align: center;
+    margin-top: 0.8rem;
+}
