@@ -14,7 +14,7 @@ export const ADD_NAVER_TOKEN = gql`
 
 export const IS_LOGGED_IN = gql`
   query IsUserLoggedIn {
-    isLoggedIn @client(always: true)
+    isLoggedIn @client
   }
 `;
 export const LOCAL_LOG_IN = gql`
