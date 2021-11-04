@@ -19,10 +19,12 @@
   height: 20rem;
   display: flex;
   align-items: flex-end;
-  padding-bottom: 1.9rem;
   justify-content: center;
+  padding-bottom: 1.9rem;
   position: relative;
   background-color: #FFFFFF;
+
+  margin-left:13%;
 
 }
 .modal_container {
@@ -58,7 +60,7 @@ color: #474747;
 
 .x{
   position:absolute;
-  margin-bottom: 94%;
+  margin-bottom: 110%;
   margin-left: 68%;
   z-index: 1501;
 }
