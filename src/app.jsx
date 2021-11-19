@@ -8,7 +8,7 @@ import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "./apollo/queries/login/login";
 import Login from "./routes/login";
 import PrivateRoute from "./services/PrivateRoute";
-import MyProfile from "./components/myPagePage/myProfile/myProfile";
+import MyProfile from "./components/myPage/myProfile/myProfile";
 import {
   BrowserView,
   MobileView,
