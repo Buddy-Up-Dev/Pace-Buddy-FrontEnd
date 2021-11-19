@@ -1,7 +1,7 @@
 import React from "react";
-import SelectOption from "../components/selectOption/selectOption";
-import NavBar from "../components/navBar/navBar";
-import NaverLogin from "./../components/login/naverLogin";
+import SelectOption from "../components/common/selectOption/selectOption";
+import NavBar from "../components/common/navBar/navBar";
+import NaverLogin from "../components/loginPage/login/naverLogin";
 
 function Main() {
   return (
