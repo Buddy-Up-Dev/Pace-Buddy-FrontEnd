@@ -1,5 +1,5 @@
 import React from "react";
-import RecordPost from "../components/recordPost/recordPost";
+import RecordPost from "../components/postPage/recordPost/recordPost";
 
 function Post() {
   return <RecordPost></RecordPost>;

@@ -8,14 +8,14 @@ import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "./apollo/queries/login/login";
 import Login from "./routes/login";
 import PrivateRoute from "./services/PrivateRoute";
-import MyProfile from "./components/myProfile/myProfile";
+import MyProfile from "./components/myPage/myProfile/myProfile";
 import {
   BrowserView,
   MobileView,
   isBrowser,
   isMobile,
 } from "react-device-detect";
-import { WebLogo } from "icons";
+import { WebLogo } from "components/common/icon/icons";
 import styles from "./app.module.css";
 
 function App() {
