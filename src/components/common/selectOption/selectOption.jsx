@@ -60,6 +60,7 @@ const SelectOption = memo(() => {
 
   const exercises = exeList && exeList["getExercise"];
   const postData = data && Object.values(data)[0]["PostData"];
+  // console.log(exercises)
 
   const handleClickExe = (key) => {
     setSelectExe(key);
@@ -95,11 +96,12 @@ const SelectOption = memo(() => {
           </Btn>
           {exercises?.map((exercise) => (
             <Btn
-              key={exercise.Index}
-              isSelectedExe={exercise.Index === selectExe ? "on" : "off"}
-              onClick={() => handleClickExe(exercise.Index)}
+              key={exercise.exerciseIndex}
+              // isSelectedExe={exercise.Index === selectExe ? "on" : "off"}
+              isSelectedExe={exercise.exerciseIndex === selectExe ? "on" : "off"}
+              onClick={() => handleClickExe(exercise.exerciseIndex)}
             >
-              {exercise.Name}
+              {exercise.exerciseName}
             </Btn>
           ))}
         </div>
