@@ -1,8 +1,10 @@
 .cardItem {
   display: flex;
   /* 그리드로 나눈 구역의 가운데에서 85%... */
-  width: 90%;
-  height: 12rem;
+  /* width: 90%; */
+  width: 168px;
+  /* height: 12rem; */
+  height: 225px;
   border-radius: 14px;
 
   /* 텍스트 아래 정렬 관련 */
@@ -18,26 +20,32 @@
 .imgFigure {
   display: flex;
   /* 그리드로 나눈 구역의 가운데에서 85%... */
-  width: 90%;
-  height: 12rem;
+  /* width: 90%; */
+  width: 168px;
+  /* height: 12rem; */
+  height: 225px;
   border-radius: 14px;
 }
 
+
+
 .card {
   font-family: Noto Sans KR;
-  padding-top: 0.01rem;
+  width: 138px;
+  height: 72px;
+
+  padding-top: 18px;
   color: #474747;
   font-size: 12px;
   margin-inline: 0.9375rem;
 }
 
-.date {
+.content_date {
   font-family: pretendard;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
-  margin-bottom: 1rem;
-  height: 0.5rem;
+  margin-bottom: 4px;
 }
 
 .container {
@@ -47,9 +55,15 @@
   margin-bottom: 8%;
 }
 
+
+
 .content {
   font-family: Noto Sans KR;
-  height: 2.8rem;
+  /* height: 2.8rem; */
+  height: 72px;
+  width: 138px;
+  line-height: 17px;  /*줄간격*/
+
   margin-right: 0.5rem;
 }
 

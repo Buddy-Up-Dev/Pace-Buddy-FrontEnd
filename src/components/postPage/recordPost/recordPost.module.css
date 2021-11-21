@@ -14,7 +14,7 @@
   margin-inline: 1rem;
 }
 .box_section {
-  margin-bottom: 0.5rem;
+  margin-bottom: 10px;
 }
 .section_name {
   font-family: Noto Sans KR;
@@ -31,7 +31,7 @@
   color: #a5a5a5;
   font-weight: normal;
   font-size: 12px;
-  line-height: 17px;
+  line-height: 25px;
 }
 hr {
   border: none;
