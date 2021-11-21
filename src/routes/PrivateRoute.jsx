@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { IS_LOGGED_IN } from "./../apollo/queries/login/login";
+import { IS_LOGGED_IN } from "../apollo/queries/login/login";
 
 function PrivateRoute({ component: Component, ...rest }) {
   const {
