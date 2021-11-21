@@ -67,14 +67,14 @@ const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
         setLikeCount(likeCount - 1);
         setLikeArr(likeArr.filter((index) => index !== post.postIndex));
         toggleLike({
-          variables: { postIndex: post.postIndex, isDuplicate: true },
+          variables: { postIndex: post.postIndex, isDelete: true },
         });
       } else {
         setIsLiked(true);
         setLikeCount(likeCount + 1);
         setLikeArr([...likeArr, post.postIndex]);
         toggleLike({
-          variables: { postIndex: post.postIndex, isDuplicate: false },
+          variables: { postIndex: post.postIndex, isDelete: false },
         });
       }
     } else {

@@ -1,18 +1,18 @@
 import React, { memo, useState, useEffect } from "react";
 import styles from "./selectOption.module.css";
-import CardList from "../cardList/cardList";
+import CardList from "../../common/cardList/cardList";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "../../../apollo/queries/login/login";
 import styled from "styled-components";
 import { GET_EXERCISES } from "../../../apollo/queries/exercises/getExercises";
-import ErrorPage from "../feedPage/errorPage";
+import ErrorPage from "../../common/feedPage/errorPage";
 import {
   GET_ALL_CARD,
   GET_OPTIONAL_CARD,
 } from "../../../apollo/queries/cardItem/getCard";
 import NullPage from "components/common/feedPage/nullPage";
 import loader from "components/common/loader/loader";
-import Load from "../loader/loader";
+import Load from "../../common/loader/loader";
 
 const SortFlag = styled.span`
   color: ${(props) => (props.color === "on" ? "#c5c5c5" : "#00bee6")};
@@ -98,7 +98,9 @@ const SelectOption = memo(() => {
             <Btn
               key={exercise.exerciseIndex}
               // isSelectedExe={exercise.Index === selectExe ? "on" : "off"}
-              isSelectedExe={exercise.exerciseIndex === selectExe ? "on" : "off"}
+              isSelectedExe={
+                exercise.exerciseIndex === selectExe ? "on" : "off"
+              }
               onClick={() => handleClickExe(exercise.exerciseIndex)}
             >
               {exercise.exerciseName}
