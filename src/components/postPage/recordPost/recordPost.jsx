@@ -133,11 +133,11 @@ function RecordPost() {
         <div>
           {exercises?.map((exercise) => (
             <Btn
-              key={exercise.Index}
-              isSelectedExe={exercise.Index === selectExe ? "on" : "off"}
-              onClick={() => handleClickExe(exercise.Index)}
+              key={exercise.exerciseIndex}
+              isSelectedExe={exercise.exerciseIndex === selectExe ? "on" : "off"}
+              onClick={() => handleClickExe(exercise.exerciseIndex)}
             >
-              {exercise.Name}
+              {exercise.exerciseName}
             </Btn>
           ))}
         </div>

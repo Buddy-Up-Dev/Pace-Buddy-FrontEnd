@@ -11,14 +11,25 @@
   box-sizing: border-box;
   transition: transform 0.5s ease;
   transform: translateX(100%);
+  
 
   overflow: hidden;
+  /* -ms-overflow-style: none!important; IE and Edge */
+  /* scrollbar-width: none!important; Firefox */
+}::-webkit-scrollbar {
+  /* display: none!important; Chrome, Safari, Opera */
+  /* width: 0px!important; */
 }
 
 .SideDrawer.show {
   transform: translateX(0);
   /* position: fixed; */
   overflow: hidden;
+  /* -ms-overflow-style: none!important; IE and Edge */
+  /* scrollbar-width: none!important; Firefox */
+}::-webkit-scrollbar {
+  /* display: none!important; Chrome, Safari, Opera */
+  /* width: 0px!important; */
 }
 .NavBar {
   position: fixed;

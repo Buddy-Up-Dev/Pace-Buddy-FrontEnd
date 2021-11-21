@@ -119,7 +119,7 @@ const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
             style={{ backgroundImage: `url(${exerciseImgURL})` }}
           >
             <div className={styles.card}>
-              <p className={styles.date}>{post.uploadDate}</p>
+              <p className={styles.content_date}>{post.uploadDate}</p>
               <p className={styles.content}>
                 {post.content.length >= 25
                   ? post.content.slice(0, 23) + " .. "
