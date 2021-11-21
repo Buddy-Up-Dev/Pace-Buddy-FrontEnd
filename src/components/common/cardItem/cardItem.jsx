@@ -6,7 +6,7 @@ import { TOGGLE_LIKE } from "../../../apollo/queries/cardItem/like";
 import { useQuery, useMutation } from "@apollo/client";
 import { Liked, UnLiked } from "../icon/icons";
 import { IS_LOGGED_IN } from "../../../apollo/queries/login/login";
-import TwoButtonModal from "components/common/modal/twoButtonModal";
+import AlertModal from "components/common/modal/alertModal";
 
 const CardImageCondition = styled.li`
   display: block;
@@ -90,14 +90,14 @@ const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
     <>
       <div className={styles.container}>
         {showModalAlert ? (
-          <TwoButtonModal
+          <AlertModal
             setShowModal={setShowModalAlert}
             message1="로그인 후 기록할 수 있어요!"
             message2="로그인 하시겠어요?"
             left="로그인"
             right="취소"
             link="/login"
-          ></TwoButtonModal>
+          ></AlertModal>
         ) : null}
         {showModal ? (
           <CardModal

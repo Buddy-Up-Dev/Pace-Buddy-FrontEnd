@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./recordFeed.module.css";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { TwoButtonModal } from "../../common/modal/twoButtonModal";
+import { AlertModal } from "../../common/modal/alertModal";
 import { EmptyCard, RecordBtn } from "../../common/icon/icons";
 import CardList from "../../common/cardList/cardList";
 import { GET_MY_CARD } from "../../../apollo/queries/cardItem/getCard";
@@ -29,14 +29,14 @@ function RecordFeed() {
   return (
     <>
       {showModal ? (
-        <TwoButtonModal
+        <AlertModal
           setShowModal={setShowModal}
           message1="로그인 후 기록할 수 있어요!"
           message2="로그인 하시겠어요?"
           left="로그인"
           right="취소"
           link="/login"
-        ></TwoButtonModal>
+        ></AlertModal>
       ) : null}
       <section className={styles.section}>
         <div className={styles.box_section}>

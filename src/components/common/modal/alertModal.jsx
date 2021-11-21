@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import styles from "./twoButtonModal.module.css";
+import styles from "./alertModal.module.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
-export const TwoButtonModal = ({
+export const AlertModal = ({
   setShowModal,
   message1,
   message2,
@@ -30,12 +30,36 @@ export const TwoButtonModal = ({
       history.push(link);
     }
   };
-  const closeModal = () => {
+  const closeModalTwo = (num) => {
     setShowModal(false);
     document.body.style.overflow = "unset";
   };
-
-  return (
+  const closeModalOne = () => {
+    setShowModal(false);
+    history.push(link);
+    history.go(0);
+    document.body.style.overflow = "unset";
+  };
+  return left == null ? (
+    <div className={styles.container} ref={modalRef}>
+      <div className={styles.modal}>
+        <div className={styles.modal_container}>
+          <div className={styles.message}>
+            {message1}
+            <br />
+            {message2}
+          </div>
+          <div className={styles.button_container_one}>
+            {/* <Link to={link} style={{ textDecoration: "none" }}> */}
+            <div className={styles.full_one} onClick={closeModalOne}>
+              <span className={styles.full_text}>{right}</span>
+            </div>
+            {/* </Link> */}
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : (
     <div className={styles.container} ref={modalRef} onClick={close}>
       <div className={styles.modal}>
         <div className={styles.modal_container}>
@@ -44,13 +68,13 @@ export const TwoButtonModal = ({
             <br />
             {message2}
           </div>
-          <div className={styles.button_container}>
+          <div className={styles.button_container_two}>
             <div onClick={doFunctional}>
-              <div className={styles.full}>
+              <div className={styles.full_two}>
                 <span className={styles.full_text}>{left}</span>
               </div>
             </div>
-            <div className={styles.empty} onClick={closeModal}>
+            <div className={styles.empty_two} onClick={closeModalTwo}>
               <span className={styles.empty_text}>{right}</span>
             </div>
           </div>
@@ -59,5 +83,8 @@ export const TwoButtonModal = ({
     </div>
   );
 };
-
-export default TwoButtonModal;
+AlertModal.defaultProps = {
+  left: null,
+  func: null,
+};
+export default AlertModal;

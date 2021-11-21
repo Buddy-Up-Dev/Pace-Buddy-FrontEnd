@@ -7,7 +7,7 @@ import { Weathers } from "../../common/icon/weathers";
 import Toggle from "../../common/toggle/toggle";
 import { ADD_CARD } from "../../../apollo/queries/cardItem/addCard";
 import { useHistory } from "react-router";
-import { OneButtonModal } from "../../common/modal/oneButtonModal";
+import { AlertModal } from "../../common/modal/alertModal";
 import CalendarBar from "components/postPage/calendar/calendarbar";
 import moment from "moment";
 
@@ -38,13 +38,11 @@ function RecordPost() {
   const [isDone, setIsDone] = useState(false);
   //const [isBlocked, setIsBlocked] = useState(false);
   const [showModal, setShowModal] = useState(false);
- 
-
 
   const [todayDate, setTodayDate] = useState(0);
   const [getMoment, setMoment] = useState(moment());
   const today = getMoment;
-  const [dateState, setDateState] = useState(today.format('YYYY.MM.DD'));
+  const [dateState, setDateState] = useState(today.format("YYYY.MM.DD"));
 
   const textRef = useRef();
 
@@ -54,7 +52,7 @@ function RecordPost() {
     setTextByte(0);
     setIsToggled(true);
     setIsDone(false);
-    setDateState(today.format('YYYY.MM.DD'));
+    setDateState(today.format("YYYY.MM.DD"));
   };
   const { data } = useQuery(GET_EXERCISES);
 
@@ -111,19 +109,22 @@ function RecordPost() {
   useEffect(() => {
     checkAll();
     // setIsBlocked(true);
-  }, [dateState,selectExe, isSelected, textByte, isToggled]);
+  }, [dateState, selectExe, isSelected, textByte, isToggled]);
 
   return (
     <div className={styles.all}>
-      <div style={{height: 51}}></div>
-      <CalendarBar dateState={dateState} setDateState={setDateState}></CalendarBar>
+      <div style={{ height: 51 }}></div>
+      <CalendarBar
+        dateState={dateState}
+        setDateState={setDateState}
+      ></CalendarBar>
       {showModal ? (
-        <OneButtonModal
+        <AlertModal
           setShowModal={setShowModal}
           message1="기록이 저장되었어요!"
           right="확인"
           link="/record"
-        ></OneButtonModal>
+        ></AlertModal>
       ) : null}
       <section className={styles.section} id={styles.section_exercise}>
         <div className={styles.box_section}>
@@ -134,7 +135,9 @@ function RecordPost() {
           {exercises?.map((exercise) => (
             <Btn
               key={exercise.exerciseIndex}
-              isSelectedExe={exercise.exerciseIndex === selectExe ? "on" : "off"}
+              isSelectedExe={
+                exercise.exerciseIndex === selectExe ? "on" : "off"
+              }
               onClick={() => handleClickExe(exercise.exerciseIndex)}
             >
               {exercise.exerciseName}
