@@ -14,34 +14,6 @@ import NullPage from "components/common/feedPage/nullPage";
 import loader from "components/common/loader/loader";
 import Load from "../../common/loader/loader";
 
-const SortFlag = styled.span`
-  color: ${(props) => (props.color === "on" ? "#c5c5c5" : "#00bee6")};
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-size: 0.75rem;
-  font-weight: normal;
-  :hover {
-    color: #00bee6;
-  }
-`;
-
-const Btn = styled.button`
-  margin-right: 1.5%;
-  margin-bottom: 1.5%;
-  margin-top: 1.5%;
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-size: 0.75rem;
-  background-color: ${(props) =>
-    props.isSelectedExe === "on" ? "#00bee6" : "white"};
-  border: 1.5px solid
-    ${(props) => (props.isSelectedExe === "on" ? "white" : "#c5c5c5")};
-  border-radius: 28px;
-  height: 1.8rem;
-  box-shadow: none;
-  color: ${(props) => (props.isSelectedExe === "on" ? "white" : "#474747")};
-`;
-
 const SelectOption = memo(() => {
   const [sortByFlag, setSortByFlag] = useState(0);
   const [selectExe, setSelectExe] = useState(0);
@@ -124,3 +96,31 @@ const SelectOption = memo(() => {
 });
 
 export default SelectOption;
+
+const SortFlag = styled.span`
+  color: ${(props) => (props.color === "on" ? "#c5c5c5" : "#00bee6")};
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: normal;
+  :hover {
+    color: #00bee6;
+  }
+`;
+
+const Btn = styled.button`
+  margin-right: 1.5%;
+  margin-bottom: 1.5%;
+  margin-top: 1.5%;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-size: 0.75rem;
+  background-color: ${(props) =>
+    props.isSelectedExe === "on" ? "#00bee6" : "white"};
+  border: 1.5px solid
+    ${(props) => (props.isSelectedExe === "on" ? "white" : "#c5c5c5")};
+  border-radius: 28px;
+  height: 1.8rem;
+  box-shadow: none;
+  color: ${(props) => (props.isSelectedExe === "on" ? "white" : "#474747")};
+`;

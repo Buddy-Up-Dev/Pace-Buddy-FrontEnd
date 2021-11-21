@@ -11,23 +11,6 @@ import { AlertModal } from "../../common/modal/alertModal";
 import CalendarBar from "components/postPage/calendar/calendarbar";
 import moment from "moment";
 
-const Btn = styled.button`
-  margin-right: 1.5%;
-  margin-bottom: 1.5%;
-  margin-top: 1.5%;
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-size: 0.75rem;
-  background-color: ${(props) =>
-    props.isSelectedExe === "on" ? "#00bee6" : "white"};
-  border: 1.5px solid
-    ${(props) => (props.isSelectedExe === "on" ? "white" : "#c5c5c5")};
-  border-radius: 28px;
-  height: 1.8rem;
-  box-shadow: none;
-  color: ${(props) => (props.isSelectedExe === "on" ? "white" : "#474747")};
-`;
-
 function RecordPost() {
   const history = useHistory();
 
@@ -224,3 +207,20 @@ function RecordPost() {
 }
 
 export default RecordPost;
+
+const Btn = styled.button`
+  margin-right: 1.5%;
+  margin-bottom: 1.5%;
+  margin-top: 1.5%;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-size: 0.75rem;
+  background-color: ${(props) =>
+    props.isSelectedExe === "on" ? "#00bee6" : "white"};
+  border: 1.5px solid
+    ${(props) => (props.isSelectedExe === "on" ? "white" : "#c5c5c5")};
+  border-radius: 28px;
+  height: 1.8rem;
+  box-shadow: none;
+  color: ${(props) => (props.isSelectedExe === "on" ? "white" : "#474747")};
+`;

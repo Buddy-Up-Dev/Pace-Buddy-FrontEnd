@@ -2,6 +2,16 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { PaceBuddy } from "../icon/icons";
 
+function Load() {
+  return (
+    <Loader>
+      <PaceBuddy size={36} />
+    </Loader>
+  );
+}
+
+export default Load;
+
 const Animation = keyframes`
     0%{
         opacity:0
@@ -23,13 +33,3 @@ const Loader = styled.div`
   transform: translate(-50%, 150%);
   text-align: center;
 `;
-
-function Load() {
-  return (
-    <Loader>
-      <PaceBuddy size={36} />
-    </Loader>
-  );
-}
-
-export default Load;

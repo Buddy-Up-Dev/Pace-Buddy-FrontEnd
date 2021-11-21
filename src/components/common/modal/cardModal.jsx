@@ -4,29 +4,6 @@ import styled from "styled-components";
 import ReactDom from "react-dom";
 import { Liked, UnLiked } from "../icon/icons";
 
-const CardImageCondition = styled.li`
-  display: block;
-  border-radius: 14px;
-  background-size: cover;
-  align-items: flex-end;
-  /* align-content: center; */
-  margin-bottom: 0.2em;
-  width: 18.063rem;
-  height: 24.063rem;
-  border: none;
-  cursor: pointer;
-  transition: transform 250ms ease-in;
-  z-index: 0;
-`;
-const CardImageExercise = styled.div`
-  background-size: cover;
-  position: relative;
-  display: flex-box;
-  width: 18.063rem;
-  height: 24.063rem;
-  z-index: 1;
-`;
-
 export const CardModal = ({
   setShowModal,
   uploadDate,
@@ -79,3 +56,26 @@ export const CardModal = ({
     </>
   );
 };
+
+const CardImageCondition = styled.li`
+  display: block;
+  border-radius: 14px;
+  background-size: cover;
+  align-items: flex-end;
+  /* align-content: center; */
+  margin-bottom: 0.2em;
+  width: 18.063rem;
+  height: 24.063rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 250ms ease-in;
+  z-index: 0;
+`;
+const CardImageExercise = styled.div`
+  background-size: cover;
+  position: relative;
+  display: flex-box;
+  width: 18.063rem;
+  height: 24.063rem;
+  z-index: 1;
+`;
