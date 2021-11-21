@@ -7,7 +7,7 @@ import Post from "./routes/post";
 import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "./apollo/queries/login/login";
 import Login from "./routes/login";
-import PrivateRoute from "./services/PrivateRoute";
+import PrivateRoute from "./routes/PrivateRoute";
 import MyProfile from "./components/myPage/myProfile/myProfile";
 import {
   BrowserView,
