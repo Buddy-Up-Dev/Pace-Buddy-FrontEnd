@@ -6,30 +6,7 @@ import { TOGGLE_LIKE } from "../../../apollo/queries/cardItem/like";
 import { useQuery, useMutation } from "@apollo/client";
 import { Liked, UnLiked } from "../icon/icons";
 import { IS_LOGGED_IN } from "../../../apollo/queries/login/login";
-import TwoButtonModal from "components/common/modal/twoButtonModal";
-
-const CardImageCondition = styled.li`
-  display: block;
-  border-radius: 14px;
-  background-size: cover;
-  align-items: flex-end;
-  /* align-content: center; */
-  margin-bottom: 0.2em;
-  width: 10.5rem;
-  height: 14.063rem;
-  border: none;
-  cursor: pointer;
-  transition: transform 250ms ease-in;
-  z-index: 0;
-`;
-const CardImageExercise = styled.div`
-  background-size: cover;
-  position: relative;
-  display: flex-box;
-  width: 10.5rem;
-  height: 14.063rem;
-  z-index: 1;
-`;
+import AlertModal from "components/common/modal/alertModal";
 
 const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
   const post = card["Post"];
@@ -90,14 +67,14 @@ const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
     <>
       <div className={styles.container}>
         {showModalAlert ? (
-          <TwoButtonModal
+          <AlertModal
             setShowModal={setShowModalAlert}
             message1="로그인 후 기록할 수 있어요!"
             message2="로그인 하시겠어요?"
             left="로그인"
             right="취소"
             link="/login"
-          ></TwoButtonModal>
+          ></AlertModal>
         ) : null}
         {showModal ? (
           <CardModal
@@ -140,3 +117,26 @@ const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
 });
 
 export default CardItem;
+
+const CardImageCondition = styled.li`
+  display: block;
+  border-radius: 14px;
+  background-size: cover;
+  align-items: flex-end;
+  /* align-content: center; */
+  margin-bottom: 0.2em;
+  width: 10.5rem;
+  height: 14.063rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 250ms ease-in;
+  z-index: 0;
+`;
+const CardImageExercise = styled.div`
+  background-size: cover;
+  position: relative;
+  display: flex-box;
+  width: 10.5rem;
+  height: 14.063rem;
+  z-index: 1;
+`;
