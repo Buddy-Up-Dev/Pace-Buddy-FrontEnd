@@ -17,15 +17,23 @@ function NaverLogin() {
   const [addToken, { loading, error, data }] = useMutation(ADD_NAVER_TOKEN, {
     onCompleted: (res) => {
       console.log(res);
-      const naverLogin = JSON.parse(res.naverLogin);
-      if (naverLogin.code === 201 || 200) {
+      console.log(res.naverLogin);
+      //잘 받아옴
+      // const naverLogin = JSON.parse(res.naverLogin); //이전코드
+      //문자열을 객체로
+
+      if (res.naverLogin.code === 201 || 200) {
         //localLogInMutation({ variables: { Token: naverLogin.JWT } });
-        localStorage.setItem("Token", naverLogin.JWT);
+
+        // localStorage.setItem("Token", naverLogin.JWT); //이전코드
+        localStorage.setItem("Token", res.naverLogin.JWT);  //로컬 데이터 저장
+
         history.push("/");
         history.go(0);
       }
     },
   });
+
   console.log(error);
   const Naver = () => {
     const naverLogin = new naver.LoginWithNaverId({
@@ -76,7 +84,7 @@ function NaverLogin() {
   };
   useEffect(() => {
     Naver();
-    getNaverToken();
+    getNaverToken(); //토큰 받기
   }, []);
 
   return (

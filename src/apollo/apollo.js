@@ -9,7 +9,7 @@ import {
 } from "@apollo/client";
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:3000/graphql",
+  uri: "http://ec2-3-35-50-85.ap-northeast-2.compute.amazonaws.com:3000/graphql",
 });
 const cache = new InMemoryCache();
 const authLink = new ApolloLink((operation, forward) => {
