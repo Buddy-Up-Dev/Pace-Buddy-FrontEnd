@@ -18,6 +18,169 @@ export const InfoClose = () => (
   </svg>
 );
 
+export const Eggthird = () => (
+  <svg
+    width="157"
+    height="170"
+    viewBox="0 0 157 170"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clipPath="url(#clip0_2227_14953)">
+      <path
+        d="M82.5644 126.622L61.7352 121.292L51.1499 162.66L71.9791 167.99L82.5644 126.622Z"
+        fill="white"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M76.5 150.6L72 168L34.9 158.5C37.4 148.9 47.2 143.1 56.8 145.5L61.8 146.8"
+        fill="white"
+      />
+      <path
+        d="M76.5 150.6L72 168L34.9 158.5C37.4 148.9 47.2 143.1 56.8 145.5L61.8 146.8"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M107 125.4H85.5V168.1H107V125.4Z"
+        fill="white"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M107 150.1V168.1H68.8C68.8 158.2 76.9 150.1 86.8 150.1H91.9"
+        fill="white"
+      />
+      <path
+        d="M107 150.1V168.1H68.8C68.8 158.2 76.9 150.1 86.8 150.1H91.9"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M36.2 85.6C22.4 88.9 21.4 102.6 22.2 108.9C25.9 110.7 28.9 114.1 29.9 118.5C31.8 126.2 27 134.1 19.3 135.9C11.6 137.8 3.70003 133 1.90003 125.3C0.900028 121.1 1.80003 116.8 4.20003 113.5C-4.69997 72.2 28.9 64 28.9 64C28.9 64 53.2 81.5 36.2 85.6Z"
+        fill="white"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M30.3 123C30.9 115 24.9 108.1 17 107.5L30.3 123Z" fill="white" />
+      <path
+        d="M30.3 123C30.9 115 24.9 108.1 17 107.5"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M81.1001 133.3C117.496 133.3 147 103.796 147 67.4C147 31.0044 117.496 1.5 81.1001 1.5C44.7045 1.5 15.2001 31.0044 15.2001 67.4C15.2001 103.796 44.7045 133.3 81.1001 133.3Z"
+        fill="white"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M75.7 87.2001C96.0241 87.2001 112.5 70.7242 112.5 50.4001C112.5 30.076 96.0241 13.6001 75.7 13.6001C55.3759 13.6001 38.9 30.076 38.9 50.4001C38.9 70.7242 55.3759 87.2001 75.7 87.2001Z"
+        fill="#FDCE00"
+      />
+      <path
+        d="M63.1 46.1001V48.2001C63.1 51.3001 65.6 53.8001 68.7 53.8001C71.8 53.8001 74.3 51.3001 74.3 48.2001V46.1001H63.1Z"
+        fill="white"
+        stroke="#474747"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M63.1 42.6001C63.9284 42.6001 64.6 41.9285 64.6 41.1001C64.6 40.2717 63.9284 39.6001 63.1 39.6001C62.2715 39.6001 61.6 40.2717 61.6 41.1001C61.6 41.9285 62.2715 42.6001 63.1 42.6001Z"
+        fill="#474747"
+      />
+      <path
+        d="M74.4 42.6001C75.2285 42.6001 75.9 41.9285 75.9 41.1001C75.9 40.2717 75.2285 39.6001 74.4 39.6001C73.5716 39.6001 72.9 40.2717 72.9 41.1001C72.9 41.9285 73.5716 42.6001 74.4 42.6001Z"
+        fill="#474747"
+      />
+      <path
+        d="M96.6001 68.3854L88.7928 71.7463L96.3054 89.1978L104.113 85.8369L96.6001 68.3854Z"
+        fill="#00BFEA"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M90.1759 61.0779L87.8796 62.0664L91.5569 70.6085L93.8531 69.62L90.1759 61.0779Z"
+        fill="white"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        opacity="0.4"
+        d="M82.8 62.9001C91.5261 62.9001 98.6 55.8261 98.6 47.1C98.6 38.3739 91.5261 31.3 82.8 31.3C74.0739 31.3 67 38.3739 67 47.1C67 55.8261 74.0739 62.9001 82.8 62.9001Z"
+        fill="white"
+      />
+      <path
+        d="M82.8 62.9001C91.5261 62.9001 98.6 55.8261 98.6 47.1C98.6 38.3739 91.5261 31.3 82.8 31.3C74.0739 31.3 67 38.3739 67 47.1C67 55.8261 74.0739 62.9001 82.8 62.9001Z"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M133.1 80.7001C134.1 87.5001 123.3 89.1001 117 90.0001C114.2 86.9001 110.1 85.1001 105.6 85.3001C97.6001 85.7001 91.5001 92.5001 91.9001 100.4C92.3001 108.4 99.1001 114.5 107 114.1C111.4 113.9 115.2 111.8 117.6 108.6C159.8 105.4 162.3 75.8001 143.6 60.6001"
+        fill="white"
+      />
+      <path
+        d="M133.1 80.7001C134.1 87.5001 123.3 89.1001 117 90.0001C114.2 86.9001 110.1 85.1001 105.6 85.3001C97.6001 85.7001 91.5001 92.5001 91.9001 100.4C92.3001 108.4 99.1001 114.5 107 114.1C111.4 113.9 115.2 111.8 117.6 108.6C159.8 105.4 162.3 75.8001 143.6 60.6001"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M101.2 86.3C108.7 83.5 117 87.2 119.8 94.7L101.2 86.3Z"
+        fill="white"
+      />
+      <path
+        d="M101.2 86.3C108.7 83.5 117 87.2 119.8 94.7"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_2227_14953">
+        <rect width="156.2" height="169.6" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
 export const EggSecond = () => (
   <svg
     width="192"

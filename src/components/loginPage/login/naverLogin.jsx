@@ -22,11 +22,13 @@ function NaverLogin() {
       // const naverLogin = JSON.parse(res.naverLogin); //이전코드
       //문자열을 객체로
 
+
       if (res.naverLogin.code === 201 || 200) {
         //localLogInMutation({ variables: { Token: naverLogin.JWT } });
 
+        console.log(res.naverLogin);
         // localStorage.setItem("Token", naverLogin.JWT); //이전코드
-        localStorage.setItem("Token", res.naverLogin.JWT);  //로컬 데이터 저장
+        localStorage.setItem("Token", res.naverLogin);  //로컬 데이터 저장
 
         history.push("/");
         history.go(0);
