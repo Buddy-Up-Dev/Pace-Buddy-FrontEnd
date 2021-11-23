@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from "react";
 import styles from "./infoModal.module.css";
-import { EggFirst, InfoClose } from "../icon/icons";
+import { EggFirst, InfoClose, EggSecond, Eggthird } from "../icon/icons";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
@@ -55,25 +55,26 @@ function InfoModal({ setShowModal }) {
       </div>
       <div className={styles.modal}>
         <div className={styles.modal_container}>
-          <div className={styles.big_font}>운동 기록 남기기</div>
+          <div className={styles.big_font}>리포트 확인하기</div>
           <div className={styles.font}>
-            오늘 했던 운동과 컨디션을 기록할 수 있어요.
+            운동기록을 모아 최근 운동 컨디션을 확인할 수 
             <br></br>
-            나만의 운동기록 카드를 모아보세요.
+            있어요. 리포트 결과를 SNS에 공유해보세요.
           </div>
-          <EggFirst></EggFirst>
+          <EggSecond></EggSecond>
         </div>
         
       </div>
       <div className={styles.modal}>
         <div className={styles.modal_container}>
-          <div className={styles.big_font}>운동 기록 남기기</div>
+          <div className={styles.big_font}>피드 살펴보기</div>
           <div className={styles.font}>
-            오늘 했던 운동과 컨디션을 기록할 수 있어요.
+            나와 같은 운동을 한 버디들의 기록을 살펴보세요.
             <br></br>
-            나만의 운동기록 카드를 모아보세요.
+            좋은 운동 기록은 좋아요를 눌러 응원할 수 있어요.
           </div>
-          <EggFirst></EggFirst>
+          <div style={{height:11}}></div>
+          <Eggthird></Eggthird>
         </div>
         
       </div>

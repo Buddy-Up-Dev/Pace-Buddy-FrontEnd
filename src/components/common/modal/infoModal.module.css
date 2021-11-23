@@ -15,8 +15,10 @@
 .modal {
   z-index: 3;
   /* background: #474747; */
-  width: 18.125rem;
-  height: 20rem;
+  /* width: 18.125rem; */
+  width: 289px;
+  /* height: 20rem; */
+  height: 320px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -39,7 +41,7 @@
   font-family: Noto Sans KR;
 font-style: normal;
 font-weight: normal;
-font-size: 12px;
+font-size: 11px;
 line-height: 17px;
 text-align: center;
 color: #474747;
