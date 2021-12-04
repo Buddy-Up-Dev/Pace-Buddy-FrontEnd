@@ -10,6 +10,7 @@ import { useHistory } from "react-router";
 import { AlertModal } from "../../common/modal/alertModal";
 import CalendarBar from "components/postPage/calendar/calendarbar";
 import moment from "moment";
+import { GET_MYDATE } from "apollo/queries/mydata/mydate";
 
 function RecordPost() {
   const history = useHistory();
@@ -28,6 +29,16 @@ function RecordPost() {
   const [dateState, setDateState] = useState(today.format("YYYY.MM.DD"));
 
   const textRef = useRef();
+
+  ////////////////////////////////////////////////////////////
+
+  // const [mydate, setMydate] = useState(0);
+  // const { data: dateList } = useQuery(GET_MYDATE);
+  // const mymydate = dateList && dateList["getMyDate"];
+  // setMydate(mymydate);
+
+/////////////////////////////////////////////////////////////
+
 
   const clearState = () => {
     setSelectExe(0);
