@@ -2,8 +2,17 @@
   display: flex;
   justify-content: center;
   margin-block: 2rem;
+  overflow: hidden;
 }
-
+.profile_img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+.profile_camera {
+  text-align: right;
+}
 .element_section {
   align-items: center;
   margin-inline: 1rem;
