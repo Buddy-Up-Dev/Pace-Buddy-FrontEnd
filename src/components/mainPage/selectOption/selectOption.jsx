@@ -83,13 +83,13 @@ const SelectOption = memo(() => {
       {error ? (
         <ErrorPage></ErrorPage>
       ) : loading ? (
-        <Load></Load>
+        <Load />
       ) : postData?.length ? (
         <section className={styles.section}>
-          <CardList data={data}></CardList>
+          <CardList data={data} />
         </section>
       ) : (
-        <NullPage></NullPage>
+        <NullPage />
       )}
     </>
   );
