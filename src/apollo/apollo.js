@@ -8,9 +8,10 @@ import {
   ApolloLink,
 } from "@apollo/client";
 
+const END_POINT = process.env.REACT_APP_END_POINT;
+
 const httpLink = new HttpLink({
-  // uri: "http://ec2-3-35-50-85.ap-northeast-2.compute.amazonaws.com:3000/graphql",
-  uri:"http://ec2-13-125-223-25.ap-northeast-2.compute.amazonaws.com:3000/graphql",
+  uri: `${END_POINT}:3000/graphql`,
 });
 const cache = new InMemoryCache();
 const authLink = new ApolloLink((operation, forward) => {

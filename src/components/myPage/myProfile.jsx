@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./myProfile.module.css";
 import styled from "styled-components";
-import { ProfileActive, RightAngleBracket } from "../../common/icon/icons";
+import { ProfileActive, RightAngleBracket } from "../common/icon/icons";
 import Navbar from "components/common/navBar/navBar";
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_NICKNAME } from "../../../apollo/queries/users/users";
+import { GET_NICKNAME } from "../../apollo/queries/users/users";
 import { LOG_OUT } from "apollo/queries/login/login";
-import { AlertModal } from "../../common/modal/alertModal";
+import { AlertModal } from "../common/modal/alertModal";
+import { ProfileCam } from "./../common/icon/icons";
+const IMG_KEY = process.env.REACT_APP_IMG_KEY;
+const { AWS } = window;
 
+console.log(IMG_KEY);
 function MyProfile() {
   const { data } = useQuery(GET_NICKNAME);
   const [logOut] = useMutation(LOG_OUT);
   const [showModal, setShowModal] = useState(false);
+  const [addProfile, setAddProfile] = useState(false);
+  const [showProfile, setShowProfile] = useState("");
+  const photoInput = useRef();
 
   const doLogOut = () => {
     localStorage.removeItem("Token");
@@ -22,6 +29,45 @@ function MyProfile() {
     setShowModal(true);
     console.log(showModal);
     document.body.style.overflow = "hidden";
+  };
+
+  const handleClick = () => {
+    console.log("handleClick");
+    photoInput.current.click();
+  };
+
+  const uploadImg = () => {
+    AWS.config.update({
+      region: "ap-northeast-2",
+      credentials: new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: `${IMG_KEY}`,
+      }),
+    });
+
+    let files = photoInput.current.files;
+    let file = files[0];
+    let fileName = file.name;
+
+    console.log("fileName >", fileName);
+
+    let upload = new AWS.S3.ManagedUpload({
+      params: {
+        Bucket: "s3forprofile",
+        Key: fileName,
+        Body: file,
+      },
+    });
+    const promise = upload.promise();
+    promise.then(
+      (data) => {
+        setAddProfile(true);
+        setShowProfile(`${data.Location}`);
+        console.log(data);
+      },
+      (err) => {
+        console.log("err >", err);
+      }
+    );
   };
 
   const nickName = data && data["userNickname"];
@@ -42,7 +88,29 @@ function MyProfile() {
       <SectionBox>
         <div className={styles.profile_box}>
           <div className={styles.profile}>
-            <ProfileActive size={"100"}></ProfileActive>
+            {addProfile ? (
+              <div>
+                <img
+                  className={styles.profile_img}
+                  src={showProfile}
+                  alt="profile"
+                />
+              </div>
+            ) : (
+              <ProfileActive size={"100"}></ProfileActive>
+            )}
+
+            <input
+              type="file"
+              accept="image/jpg, image/jpeg, image/png"
+              id="file"
+              ref={photoInput}
+              style={{ display: "none" }}
+              onChange={uploadImg}
+            />
+            <div className={styles.profile_camera} onClick={handleClick}>
+              <ProfileCam />
+            </div>
           </div>
         </div>
         <section className={styles.element_section}>
