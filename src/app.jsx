@@ -18,6 +18,8 @@ import {
 import { WebLogo } from "components/common/icon/icons";
 import styles from "./app.module.css";
 
+//여기서 전체 크기 div 정하고 margin auto 0
+
 function App() {
   const {
     data: { isLoggedIn },
@@ -25,7 +27,7 @@ function App() {
   console.log({ isLoggedIn });
   return (
     <>
-      <BrowserView>
+      {/* <BrowserView>
         <div className={styles.image_style}>
           <WebLogo></WebLogo>
         </div>
@@ -44,7 +46,19 @@ function App() {
             <PrivateRoute path="/myPage" component={MyProfile}></PrivateRoute>
           </Switch>
         </Router>
-      </MobileView>
+      </MobileView> */}
+      <div style={{ width: 405, margin: "auto" }}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Main}></Route>
+            <Route path="/login" component={Login}></Route>
+            <Route exact path="/record" component={Record}></Route>
+            <PrivateRoute path="/record/post" component={Post}></PrivateRoute>
+            <PrivateRoute path="/report" component={Report}></PrivateRoute>
+            <PrivateRoute path="/myPage" component={MyProfile}></PrivateRoute>
+          </Switch>
+        </Router>
+      </div>
     </>
   );
 }

@@ -12,6 +12,8 @@ import { GET_NICKNAME } from "../../../apollo/queries/users/users";
 import { NavbarNext } from "../icon/icons";
 import InfoModal from "../modal/infoModal";
 
+//피드 바디에다가 조건부 스타일로... 네비바가 열릴때 포지션 fixed 없애는걸로.. 오버플로우 히든 none
+
 export const NavBar = () => {
   const {
     data: { isLoggedIn },
@@ -31,13 +33,14 @@ export const NavBar = () => {
 
   const reload = () => {
     setShowSideDrawer(false);
+    document.body.style.overflow = "unset";
     history.push("/");
     history.go(0);
   };
   const handleInfoModal = () => {
     setShowSideDrawer(false);
     setShowModal(true);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "unset";
   };
 
   // const modalRef = useRef();
@@ -52,24 +55,26 @@ export const NavBar = () => {
   const ToggleSidebar = () => {
     return (
       <>
-        <div className={styles.height}>
-          <Link onClick={reload} to="/">
-            <PaceBuddy />
-          </Link>
+        <div style={{ width: 405, margin: "auto" }}>
+          <div className={styles.height}>
+            <Link onClick={reload} to="/">
+              <PaceBuddy />
+            </Link>
 
-          {/* navbar 페이지 분기로 수정, 라우팅 시 애니메이션 효과를 따로 적용 */}
-          <Link
-            className={styles.ham_button}
-            onClick={() => setShowSideDrawer(!showSideDrawer)}
-            to="#"
-          >
-            {/* 상태 따라서 전환 */}
-            {showSideDrawer ? <Close /> : <HamBurger />}
-          </Link>
-        </div>
-        {/* <button onClick={() => setShowSideDrawer(!showSideDrawer)}>
+            {/* navbar 페이지 분기로 수정, 라우팅 시 애니메이션 효과를 따로 적용 */}
+            <Link
+              className={styles.ham_button}
+              onClick={() => setShowSideDrawer(!showSideDrawer)}
+              to="#"
+            >
+              {/* 상태 따라서 전환 */}
+              {showSideDrawer ? <Close /> : <HamBurger />}
+            </Link>
+          </div>
+          {/* <button onClick={() => setShowSideDrawer(!showSideDrawer)}>
         Toggle Sidebar
       </button> */}
+        </div>
       </>
     );
   };
@@ -140,7 +145,11 @@ export const NavBar = () => {
             >
               기록
             </Link>
-            <Link className={styles.link} style={{ color: "#C5C5C5" }} to="/report">
+            <Link
+              className={styles.link}
+              style={{ color: "#C5C5C5" }}
+              to="/report"
+            >
               리포트🚧
             </Link>
             <div
