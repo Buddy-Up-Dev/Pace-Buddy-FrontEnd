@@ -3,6 +3,8 @@ import styles from "./cardModal.module.css";
 import styled from "styled-components";
 import ReactDom from "react-dom";
 import { Liked, UnLiked } from "../icon/icons";
+import html2canvas from "html2canvas";
+import { ShareBtn } from "./../icon/icons";
 
 export const CardModal = ({
   setShowModal,
@@ -16,6 +18,7 @@ export const CardModal = ({
   likeCount,
 }) => {
   const modalRef = useRef();
+  const imageRef = useRef();
   const exerciseImgURL = "images/exercises/exercise" + exercise + ".svg";
   const conditionImgURL = "images/conditions/condition" + condition + ".svg";
 
@@ -31,26 +34,38 @@ export const CardModal = ({
     document.body.style.overflow = "unset";
   };
 
+  const domToImg = () => {
+    console.log(modalRef);
+    html2canvas(imageRef.current).then((canvas) => {
+      console.log(canvas.toDataURL());
+    });
+  };
+
   return (
     <>
       <div className={styles.container} ref={modalRef} onClick={close}>
-        <CardImageCondition
-          style={{ backgroundImage: `url(${conditionImgURL})` }}
-        >
-          <CardImageExercise
-            style={{ backgroundImage: `url(${exerciseImgURL})` }}
+        <div ref={imageRef}>
+          <CardImageCondition
+            style={{ backgroundImage: `url(${conditionImgURL})` }}
           >
-            <div className={styles.card}>
-              <p className={styles.date}>{uploadDate}</p>
-              <p className={styles.content}>{content}</p>
-            </div>
-          </CardImageExercise>
-        </CardImageCondition>
+            <CardImageExercise
+              style={{ backgroundImage: `url(${exerciseImgURL})` }}
+            >
+              <div className={styles.card}>
+                <p className={styles.date}>{uploadDate}</p>
+                <p className={styles.content}>{content}</p>
+              </div>
+            </CardImageExercise>
+          </CardImageCondition>
+        </div>
         <div className={styles.like}>
           <div className={styles.like_icon} onClick={handleLikeToggle}>
             {isLiked ? <Liked /> : <UnLiked />}
           </div>
           <span className={styles.like_text}>{likeCount}</span>
+        </div>
+        <div className={styles.share_icon} onClick={domToImg}>
+          <ShareBtn></ShareBtn>
         </div>
       </div>
     </>

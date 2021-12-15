@@ -22,7 +22,6 @@ const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
   const [isLiked, setIsLiked] = useState();
   const [likeCount, setLikeCount] = useState(like);
   const [likeArr, setLikeArr] = useState(likeArray);
-
   const [toggleLike, { data }] = useMutation(TOGGLE_LIKE);
 
   const checkAlreadyLiked = () => {
