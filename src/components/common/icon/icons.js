@@ -1,5 +1,25 @@
 import React from "react";
 
+export const ShareBtn = () => (
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g id="Property 1=Default">
+      <path
+        id="Vector"
+        d="M18.6764 12.2857H11.0504C10.2414 12.2857 9.4655 12.6053 8.89344 13.174C8.32138 13.7428 8 14.5143 8 15.3187V28.967C8 29.7714 8.32138 30.5429 8.89344 31.1117C9.4655 31.6805 10.2414 32 11.0504 32H24.7772C25.5862 32 26.3621 31.6805 26.9341 31.1117C27.5062 30.5429 27.8276 29.7714 27.8276 28.967V21.3846M17.4828 23.4286L33 8M33 8H25.2414M33 8V15.7143"
+        stroke="#474747"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+  </svg>
+);
 export const ReportIMG = () => (
   <svg
     width="345"
