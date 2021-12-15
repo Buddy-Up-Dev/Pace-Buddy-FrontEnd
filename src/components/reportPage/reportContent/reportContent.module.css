@@ -1,90 +1,77 @@
-.report{
-    display: block;
-    height: 4rem;
-    color: #474747;
-    font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 4rem;
-    margin-left: 0.8rem;
+.wrap_report {
+  margin-left: 15px;
+}
+.report {
+  display: block;
+  height: 4rem;
+  color: #474747;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 4rem;
+  margin-top: 9px;
 }
 
-.onement{
-    display: block;
-    height: 1.5rem;
-    color: #A5A5A5;
-    font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 1.5rem;
-    margin-left: 0.8rem;
+.onement {
+  display: block;
+  height: 1.5rem;
+  color: #a5a5a5;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 1.5rem;
 }
 
-.changement{
-    display: block;
-    height: 1.5rem;
-    color: #474747;
-    font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 1.5rem;
-    margin-left: 0.8rem;
+.changement {
+  display: block;
+  height: 1.5rem;
+  color: #474747;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 1.5rem;
 }
 
-.emptyimg{
-    margin-top: 1.1rem;
-    margin-left: 0.8rem;
-    margin-bottom: 1rem;
+.emptyimg {
+  margin-top: 1.1rem;
+  margin-bottom: 1rem;
+}
+.save_comment_box {
+  display: flex;
+}
+.report_comment_box {
+  margin-block: 15px;
+}
+.report_comment_line {
+  margin-block: 5px;
+}
+.save_comment {
+  white-space: pre-line;
+  height: 1.1rem;
+  color: #a5a5a5;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 17px;
 }
 
-.savement1{
-    position: absolute;
-    display: block;
-    height: 1.1rem;
-    color: #A5A5A5;
-    font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 1.5rem;
-    margin-left: 0.8rem;
+.to_report_button {
+  display: absolute;
+  width: 40px;
+  height: 2rem;
 }
 
-.savement2{
-    position: absolute;
-    display: block;
-    height: 1.1rem;
-    color: #A5A5A5;
-    font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 1.5rem;
-    margin-left: 0.8rem;
-    margin-top:1rem;
+.made_report {
 }
-
-.to_report_button{
-    display: absolute;
-    /* text-align: right; */
-    /* align-items: right; */
-    margin-left: auto;
-    margin-right: 5rem;
-    margin-top: 1.2rem;
-    /* right: 5%; */
-    /* position: absolute; */
-    /* align-items: ; */
-    /* margin-left: auto;
-    margin-right: 0.8rem; */
-    width: 2rem;
-    /* left: 72%; */
-    /* right: 10%; */
-    height: 2rem;
-}
-
-.made_report{
-
+.report_comment_box {
+  font-family: Noto Sans KR;
+  color: #474747;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 17px;
 }
