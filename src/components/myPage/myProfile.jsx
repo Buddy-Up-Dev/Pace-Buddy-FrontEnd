@@ -8,13 +8,14 @@ import { GET_NICKNAME } from "../../apollo/queries/users/users";
 import { LOG_OUT } from "apollo/queries/login/login";
 import { AlertModal } from "../common/modal/alertModal";
 import { ProfileCam } from "./../common/icon/icons";
+import { UPLOAD_PROFILE } from "./../../apollo/queries/myProfile/myProfile";
 const IMG_KEY = process.env.REACT_APP_IMG_KEY;
 const { AWS } = window;
 
 console.log(IMG_KEY);
 function MyProfile() {
   const { data } = useQuery(GET_NICKNAME);
-  const [logOut] = useMutation(LOG_OUT);
+  const [uploadProfile] = useMutation(UPLOAD_PROFILE);
   const [showModal, setShowModal] = useState(false);
   const [addProfile, setAddProfile] = useState(false);
   const [showProfile, setShowProfile] = useState("");
@@ -62,6 +63,7 @@ function MyProfile() {
       (data) => {
         setAddProfile(true);
         setShowProfile(`${data.Location}`);
+        uploadProfile({ variables: { imgURL: `${data.Location}` } });
         console.log(data);
       },
       (err) => {
