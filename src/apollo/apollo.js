@@ -11,7 +11,8 @@ import {
 const END_POINT = process.env.REACT_APP_END_POINT;
 
 const httpLink = new HttpLink({
-  uri: `${END_POINT}:3000/graphql`,
+  uri: "http://localhost:3000/graphql",
+  // uri: `${END_POINT}:3000/graphql`,
 });
 const cache = new InMemoryCache();
 const authLink = new ApolloLink((operation, forward) => {
