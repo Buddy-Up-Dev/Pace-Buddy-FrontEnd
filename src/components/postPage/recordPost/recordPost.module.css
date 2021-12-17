@@ -33,6 +33,17 @@
   font-size: 12px;
   line-height: 25px;
 }
+
+.section_detail_feed {
+  font-family: Noto Sans KR;
+  font-style: normal;
+  color: #a5a5a5;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 25px;
+  width: 250px;
+}
+
 hr {
   border: none;
   background-color: rgba(196, 196, 196, 0.2);
@@ -108,12 +119,21 @@ textarea:focus {
 }
 .condition {
 }
+
+
+
+
+
+
+
+
+
 .feed {
   display: flex;
 }
 .toggle_button {
   margin: 1%;
-  margin-left: 6rem;
+  margin-left: 60px;
 }
 .feed_open {
   margin-block: unset;

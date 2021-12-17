@@ -124,8 +124,8 @@ const CardImageCondition = styled.li`
   align-items: flex-end;
   /* align-content: center; */
   margin-bottom: 0.2em;
-  width: 10.5rem;
-  height: 14.063rem;
+  width: 168px;
+  height: 225px;
   border: none;
   cursor: pointer;
   transition: transform 250ms ease-in;

@@ -47,7 +47,7 @@ function App() {
           </Switch>
         </Router>
       </MobileView> */}
-      <div style={{ width: 405, margin: "auto" }}>
+      <div style={{ width: 375, margin: "auto" }}>
         <Router>
           <Switch>
             <Route exact path="/" component={Main}></Route>

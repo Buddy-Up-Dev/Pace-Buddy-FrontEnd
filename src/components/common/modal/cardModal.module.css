@@ -17,13 +17,12 @@
 .container .modal {
   z-index: 3;
   background: white;
-  width: 18.063rem;
-  height: 24.063rem;
+  width: 289px;
+  height: 385px;
   display: flex;
-  justify-content: center;
-  border-radius: 5px;
+  justify-content:center;
   position: relative;
-  border-radius: 14px;
+  border-radius: 0px;
 
   background-color: #d3d3d3;
 
@@ -49,16 +48,20 @@
 
 .card {
   font-family: Noto Sans KR;
-  padding-top: 0.01rem;
+  padding-top: 28px;
   color: #474747;
   font-size: 1.125rem;
-  margin-inline: 0.9375rem;
+  /* margin-inline: 0.9375rem; */
+  line-height: 20px;
+  width: 200px;
+  margin-left: 18px;
 }
 
 .content {
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
+  font-size: 16px;
   height: 2.8rem;
   margin-right: 0.5rem;
 }
@@ -66,7 +69,7 @@
   font-family: pretendard;
   font-style: normal;
   font-weight: bold;
-  font-size: 2.25rem;
+  font-size: 28px;
   margin-bottom: 0.8rem;
 }
 .like {
@@ -74,15 +77,25 @@
   font-family: pretendard;
   color: #878787;
   font-size: 12px;
-  margin-left: 0.25rem;
   display: table;
+  width: 81px;
+  height: 32px;
+  border-radius: 500px;
+  margin-left: -206px;
+  margin-top: 5px;
 }
 .like_icon {
   display: table-cell;
+  /* padding: 8px; */
+  padding-left: 25px;
+  padding-top: 8px;
+  padding-right: 0px;
+  width: 20px;
 }
 .like_text {
-  padding-left: 0.2rem;
+  padding-left: 4px;
   display: table-cell;
   height: 15px;
   vertical-align: middle;
+
 }
