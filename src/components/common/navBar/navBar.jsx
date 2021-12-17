@@ -15,6 +15,8 @@ import { GET_PROFILE } from "./../../../apollo/queries/myProfile/myProfile";
 
 //피드 바디에다가 조건부 스타일로... 네비바가 열릴때 포지션 fixed 없애는걸로.. 오버플로우 히든 none
 
+//피드 바디에다가 조건부 스타일로... 네비바가 열릴때 포지션 fixed 없애는걸로.. 오버플로우 히든 none
+
 export const NavBar = () => {
   const {
     data: { isLoggedIn },
