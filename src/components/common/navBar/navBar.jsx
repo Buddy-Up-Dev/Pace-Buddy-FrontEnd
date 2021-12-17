@@ -11,6 +11,7 @@ import { IS_LOGGED_IN } from "../../../apollo/queries/login/login";
 import { GET_NICKNAME } from "../../../apollo/queries/users/users";
 import { NavbarNext } from "../icon/icons";
 import InfoModal from "../modal/infoModal";
+import { GET_PROFILE } from "./../../../apollo/queries/myProfile/myProfile";
 
 //피드 바디에다가 조건부 스타일로... 네비바가 열릴때 포지션 fixed 없애는걸로.. 오버플로우 히든 none
 
@@ -19,11 +20,16 @@ export const NavBar = () => {
     data: { isLoggedIn },
   } = useQuery(IS_LOGGED_IN);
   const { data } = useQuery(GET_NICKNAME);
+  const { data: prof } = useQuery(GET_PROFILE);
   const nickName = data && data["userNickname"];
   // 처음엔 닫겨있기
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [showSideDrawer, setShowSideDrawer] = useState(false);
+
+  const profile = prof && prof["hasProfile"];
+
+  console.log(profile);
   const sidebarClasses = classname([
     styles.SideDrawer,
     {
@@ -86,20 +92,38 @@ export const NavBar = () => {
         {/* 내용물.. */}
         <div className={sidebarClasses}>
           {isLoggedIn ? (
-            <div className={styles.profile}>
-              <ProfileActive
-                size={"60"}
-                className={styles.profile_photo}
-              ></ProfileActive>
-              <Link to="/myPage" className={styles.nickname}>
-                {nickName}님
-              </Link>
-              <div className={styles.next}>
-                <NavbarNext className={styles.next}></NavbarNext>
+            profile?.hasProfile ? (
+              <div className={styles.profile}>
+                <img
+                  className={styles.profile_img}
+                  src={profile.imgURL}
+                  alt="profile"
+                />
+                <Link to="/myPage" className={styles.nickname}>
+                  {nickName}님
+                </Link>
+                <div className={styles.next}>
+                  <NavbarNext className={styles.next}></NavbarNext>
+                </div>
+                <br></br>
+                <div className={styles.ment}>오늘도 힘차게 움직여요 :)</div>
               </div>
-              <br></br>
-              <div className={styles.ment}>오늘도 힘차게 움직여요 :)</div>
-            </div>
+            ) : (
+              <div className={styles.profile}>
+                <ProfileActive
+                  size={"60"}
+                  className={styles.profile_photo}
+                ></ProfileActive>
+                <Link to="/myPage" className={styles.nickname}>
+                  {nickName}님
+                </Link>
+                <div className={styles.next}>
+                  <NavbarNext className={styles.next}></NavbarNext>
+                </div>
+                <br></br>
+                <div className={styles.ment}>오늘도 힘차게 움직여요 :)</div>
+              </div>
+            )
           ) : (
             <div className={styles.profile}>
               <ProfilePhoto
@@ -116,7 +140,6 @@ export const NavBar = () => {
               <div className={styles.hello}>반가워요!</div>
             </div>
           )}
-
           {/* <div className={styles.profile}>            
             <ProfileActive
               size={"60"}
