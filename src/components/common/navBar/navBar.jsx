@@ -102,9 +102,9 @@ export const NavBar = () => {
                 <Link to="/myPage" className={styles.nickname}>
                   {nickName}님
                 </Link>
-                <div className={styles.next}>
+                <Link to="/myPage" className={styles.next}>
                   <NavbarNext className={styles.next}></NavbarNext>
-                </div>
+                 </Link>
                 <br></br>
                 <div className={styles.ment}>오늘도 힘차게 움직여요 :)</div>
               </div>

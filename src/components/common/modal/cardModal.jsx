@@ -74,13 +74,13 @@ export const CardModal = ({
 
 const CardImageCondition = styled.li`
   display: block;
-  border-radius: 14px;
+  border-radius: 0px;
   background-size: cover;
   align-items: flex-end;
   /* align-content: center; */
   margin-bottom: 0.2em;
-  width: 18.063rem;
-  height: 24.063rem;
+  width: 289px;
+  height: 385px;
   border: none;
   cursor: pointer;
   transition: transform 250ms ease-in;
@@ -90,7 +90,7 @@ const CardImageExercise = styled.div`
   background-size: cover;
   position: relative;
   display: flex-box;
-  width: 18.063rem;
-  height: 24.063rem;
+  width: 289px;
+  height: 385px;
   z-index: 1;
 `;

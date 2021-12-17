@@ -189,7 +189,7 @@ function RecordPost() {
           <div className={styles.feed}>
             <div className={styles.section_text}>
               <div className={styles.section_name}>피드에 게시</div>
-              <div className={styles.section_detail}>
+              <div className={styles.section_detail_feed}>
                 다른 버디들과 기록을 공유할 수 있어요.
               </div>
             </div>
