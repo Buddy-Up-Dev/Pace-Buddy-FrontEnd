@@ -1,5 +1,5 @@
 .SideDrawer {
-  margin:auto;
+  margin: auto;
   position: fixed;
   /* width: 100%; */
   width : 375px;
@@ -14,12 +14,12 @@
   transition: transform 0.5s ease;
   /* transform: translateX(100%); */
   transform: translateX(400%);
-  
 
   overflow: hidden;
   /* -ms-overflow-style: none!important; IE and Edge */
   /* scrollbar-width: none!important; Firefox */
-}::-webkit-scrollbar {
+}
+::-webkit-scrollbar {
   /* display: none!important; Chrome, Safari, Opera */
   /* width: 0px!important; */
 }
@@ -29,13 +29,14 @@
   transform: translateX(0);
   /* position: fixed; */
   /* overflow: hidden; */
-  overflow:unset;
+  overflow: unset;
   /* -ms-overflow-style: none!important; IE and Edge */
   /* scrollbar-width: none!important; Firefox */
-}::-webkit-scrollbar {
+}
+::-webkit-scrollbar {
   /* display: none!important; Chrome, Safari, Opera */
   /* width: 0px!important; */
-  overflow:unset;
+  overflow: unset;
 }
 .NavBar {
   position: fixed;
@@ -58,8 +59,10 @@
   padding-top: 0; */
   margin-left: 180px;
   /* margin-right: 5.87%; */
+
   top: 2%;  /*모바일 기준*/
   margin-top: 12px;
+
 
   z-index: 1;
 }
@@ -82,7 +85,6 @@
   position: fixed;
   z-index: 1201;
 }
-
 
 .line {
   height: 0.5px;
@@ -126,7 +128,12 @@
   display: block;
   /* margin-top: 2rem; */
 }
-
+.profile_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  object-fit: cover;
+}
 .line {
   height: 1px;
   background-color: #c5c5c5;
@@ -153,7 +160,7 @@
   text-decoration: none;
   font-family: Noto Sans KR;
   font-style: normal;
-font-weight: bold;
+  font-weight: bold;
 }
 
 .next {
