@@ -26,7 +26,7 @@ function MyProfile() {
   const photoInput = useRef();
   const nickName = nick && nick["userNickname"];
   const profile = prof && prof["hasProfile"];
-  console.log(profile);
+
   const doLogOut = () => {
     localStorage.removeItem("Token");
     window.location = "/";
@@ -94,7 +94,7 @@ function MyProfile() {
       <SectionBox>
         <div className={styles.profile_box}>
           <div className={styles.profile}>
-            {profile.hasProfile ? (
+            {profile?.hasProfile ? (
               <div>
                 <img
                   className={styles.profile_img}

@@ -15,8 +15,6 @@ import { GET_PROFILE } from "./../../../apollo/queries/myProfile/myProfile";
 
 //피드 바디에다가 조건부 스타일로... 네비바가 열릴때 포지션 fixed 없애는걸로.. 오버플로우 히든 none
 
-//피드 바디에다가 조건부 스타일로... 네비바가 열릴때 포지션 fixed 없애는걸로.. 오버플로우 히든 none
-
 export const NavBar = () => {
   const {
     data: { isLoggedIn },
@@ -28,7 +26,10 @@ export const NavBar = () => {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [showSideDrawer, setShowSideDrawer] = useState(false);
+
   const profile = prof && prof["hasProfile"];
+
+  console.log(profile);
   const sidebarClasses = classname([
     styles.SideDrawer,
     {
@@ -91,7 +92,7 @@ export const NavBar = () => {
         {/* 내용물.. */}
         <div className={sidebarClasses}>
           {isLoggedIn ? (
-            profile.hasProfile ? (
+            profile?.hasProfile ? (
               <div className={styles.profile}>
                 <img
                   className={styles.profile_img}
@@ -139,7 +140,6 @@ export const NavBar = () => {
               <div className={styles.hello}>반가워요!</div>
             </div>
           )}
-
           {/* <div className={styles.profile}>            
             <ProfileActive
               size={"60"}
