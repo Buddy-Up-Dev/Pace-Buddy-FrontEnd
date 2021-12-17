@@ -8,19 +8,25 @@ import { GET_NICKNAME } from "../../apollo/queries/users/users";
 import { LOG_OUT } from "apollo/queries/login/login";
 import { AlertModal } from "../common/modal/alertModal";
 import { ProfileCam } from "./../common/icon/icons";
-import { UPLOAD_PROFILE } from "./../../apollo/queries/myProfile/myProfile";
+import {
+  UPLOAD_PROFILE,
+  GET_PROFILE,
+} from "./../../apollo/queries/myProfile/myProfile";
 const IMG_KEY = process.env.REACT_APP_IMG_KEY;
 const { AWS } = window;
 
 console.log(IMG_KEY);
 function MyProfile() {
-  const { data } = useQuery(GET_NICKNAME);
+  const { data: prof } = useQuery(GET_PROFILE);
+  const { data: nick } = useQuery(GET_NICKNAME);
   const [uploadProfile] = useMutation(UPLOAD_PROFILE);
   const [showModal, setShowModal] = useState(false);
   const [addProfile, setAddProfile] = useState(false);
   const [showProfile, setShowProfile] = useState("");
   const photoInput = useRef();
-
+  const nickName = nick && nick["userNickname"];
+  const profile = prof && prof["hasProfile"];
+  console.log(profile);
   const doLogOut = () => {
     localStorage.removeItem("Token");
     window.location = "/";
@@ -72,8 +78,6 @@ function MyProfile() {
     );
   };
 
-  const nickName = data && data["userNickname"];
-
   return (
     <>
       {showModal ? (
@@ -90,11 +94,11 @@ function MyProfile() {
       <SectionBox>
         <div className={styles.profile_box}>
           <div className={styles.profile}>
-            {addProfile ? (
+            {profile.hasProfile ? (
               <div>
                 <img
                   className={styles.profile_img}
-                  src={showProfile}
+                  src={profile.imgURL}
                   alt="profile"
                 />
               </div>
