@@ -119,6 +119,10 @@ function MyProfile() {
             </div>
           </div>
         </div>
+
+
+
+
         <section className={styles.element_section}>
           <div className={styles.element}>
             <span className={styles.element_text} id={styles.nickName_text}>
@@ -155,10 +159,8 @@ export default MyProfile;
 const SectionBox = styled.div`
   position: fixed;
   top: 3rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
+  margin : auto;
+  width: 375px;
   height: 100%;
   background-color: #f9feff;
   z-index: -1;
