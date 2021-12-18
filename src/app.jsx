@@ -17,6 +17,7 @@ import {
 } from "react-device-detect";
 import { WebLogo } from "components/common/icon/icons";
 import styles from "./app.module.css";
+import Ninkname from "components/myPage/ninkname";
 
 //여기서 전체 크기 div 정하고 margin auto 0
 
@@ -56,6 +57,7 @@ function App() {
             <PrivateRoute path="/record/post" component={Post}></PrivateRoute>
             <PrivateRoute path="/report" component={Report}></PrivateRoute>
             <PrivateRoute path="/myPage" component={MyProfile}></PrivateRoute>
+            <PrivateRoute path="/nickname" component={Ninkname}></PrivateRoute>
           </Switch>
         </Router>
       </div>
