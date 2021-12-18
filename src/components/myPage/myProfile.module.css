@@ -11,7 +11,12 @@
   object-fit: cover;
 }
 .profile_camera {
+  position:absolute;
   text-align: right;
+  /* background-color: thistle; */
+  z-index: 1;
+  right: 134px;
+  top:103px;
 }
 .element_section {
   align-items: center;
