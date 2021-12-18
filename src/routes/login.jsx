@@ -6,8 +6,8 @@ import LoginContents from "components/loginPage/login/loginContents";
 function Login() {
   return (
     <>
-      <NavBar></NavBar>
-      <LoginContents></LoginContents>
+        <NavBar></NavBar>
+        <LoginContents></LoginContents>
     </>
   );
 }
