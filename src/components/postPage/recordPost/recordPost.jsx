@@ -68,6 +68,7 @@ function RecordPost() {
     document.body.style.overflow = "hidden";
   };
   const handlecheckByte = () => {
+    //요만큼 길이제한...
     setTextByte(textRef.current.value.length);
   };
 
@@ -78,16 +79,17 @@ function RecordPost() {
   const limitedByte = () => {};
 
   const checkAll = () => {
-    if (selectExe && isSelected && textByte) {
+ 
+      if (selectExe && isSelected && (45>textByte) && (textByte>10)) { //저장하기 버튼을 textByte 제한에 맞춰 활성화
       setIsDone(true);
     } else {
       setIsDone(false);
     }
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = (event) => { //저장 제출함수
     event.preventDefault();
-    isDone &&
+    isDone && //저장하기 활성화 여부
       addCard({
         variables: {
           uploadDate: dateState,
@@ -104,6 +106,9 @@ function RecordPost() {
     checkAll();
     // setIsBlocked(true);
   }, [dateState, selectExe, isSelected, textByte, isToggled]);
+
+
+  // console.log(typeof textByte);
 
   return (
     <div className={styles.all}>

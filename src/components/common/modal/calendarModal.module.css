@@ -66,15 +66,18 @@
     .container {
       position: fixed;
       /* position:absolute; */
-      top: 52px;
-      left: 0;
+      top: 56px;
+      width: 375px;
+      /* left: 0;
+      right: 0; */
       bottom: 0;
-      right: 0;
       display: flex;
       align-items:flex-end;
       /* justify-content: center; */
       background: rgba(0, 0, 0, 0.6);
       border-radius: 0;
+
+      margin-left: -11px; 
 
       /* 왜 이게 높은데 모달이 더 높은데 있을 까... */
       z-index:2;
@@ -84,7 +87,7 @@
       position: fixed;
       bottom: 0;
       z-index: 1;
-      width:100%;
+      width:375px;
       height: 22rem;
       background: white;
       display: flex;
