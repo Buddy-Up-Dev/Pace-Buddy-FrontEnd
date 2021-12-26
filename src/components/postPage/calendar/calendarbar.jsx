@@ -68,7 +68,7 @@ const DateButton = styled.button`
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
-  height: 2rem;
+  height: 20px;
   width: 10%;
   border: none;
   border-radius: 100px;
@@ -81,7 +81,7 @@ const DateButton = styled.button`
 const DropButton = styled.svg`
   position: absolute;
   width: 2rem;
-  height: 2rem;
+  height: 20px;
   top: 1rem;
   right: 7rem;
 `;

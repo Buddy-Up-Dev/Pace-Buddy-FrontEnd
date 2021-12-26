@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import styles from "./myProfile.module.css";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ProfileActive, RightAngleBracket } from "../common/icon/icons";
 import Navbar from "components/common/navBar/navBar";
@@ -7,7 +8,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { GET_NICKNAME } from "../../apollo/queries/users/users";
 import { LOG_OUT } from "apollo/queries/login/login";
 import { AlertModal } from "../common/modal/alertModal";
-import { ProfileCam } from "./../common/icon/icons";
+import { ProfileCam, Next } from "./../common/icon/icons";
 import {
   UPLOAD_PROFILE,
   GET_PROFILE,
@@ -120,15 +121,21 @@ function MyProfile() {
           </div>
         </div>
 
-
-
-
         <section className={styles.element_section}>
           <div className={styles.element}>
             <span className={styles.element_text} id={styles.nickName_text}>
               닉네임
             </span>
             <span className={styles.nickName}>{nickName}</span>
+
+            <Link to="/nickname" className={styles.reName}>
+              수정하기
+            </Link>
+            <Link to="/nickname">
+              <div className={styles.next_location}>
+                <Next></Next>
+              </div>
+            </Link>
           </div>
           <div className={styles.element}>
             <span className={styles.element_text}>개인정보처리방침</span>
@@ -159,7 +166,7 @@ export default MyProfile;
 const SectionBox = styled.div`
   position: fixed;
   top: 3rem;
-  margin : auto;
+  margin: auto;
   width: 375px;
   height: 100%;
   background-color: #f9feff;

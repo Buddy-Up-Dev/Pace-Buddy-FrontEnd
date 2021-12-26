@@ -49,7 +49,7 @@
   margin-bottom: 4px;
 }
 
-.container {
+.container {  /*모달 종속... 어케 빼내...*/
   /* display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
 	grid-gap: 0.5em; */

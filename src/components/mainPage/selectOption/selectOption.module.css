@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   margin-top: 12px;
-  margin-inline: 1rem;
+
+  /* 피드 들여쓰기 */
+  margin-inline: 16px;
 }
 .sort_section {
   margin-top: 1%;

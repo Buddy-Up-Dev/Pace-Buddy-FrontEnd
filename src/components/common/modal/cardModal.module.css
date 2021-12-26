@@ -1,10 +1,16 @@
 .container {
   position: fixed;
   top: 0;
-  left: 0;
+  /* left: 0;
   bottom: 0;
-  right: 0;
-  height: 100vh;
+  right: 0; */
+
+
+  margin-left: -16px; 
+  /* selectOption.module의 section에서 margin-inline 한 만큼 줄이기 */
+
+  width: 375px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
