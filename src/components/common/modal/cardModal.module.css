@@ -1,16 +1,10 @@
 .container {
   position: fixed;
   top: 0;
-  /* left: 0;
+  left: 0;
   bottom: 0;
-  right: 0; */
-
-
-  margin-left: -16px; 
-  /* selectOption.module의 section에서 margin-inline 한 만큼 줄이기 */
-
-  width: 375px;
-  height: 100%;
+  right: 0;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,14 +13,17 @@
 }
 .container {
   flex-direction: column;
+  width: 375px;
+  margin: auto;
 }
+
 .container .modal {
   z-index: 3;
   background: white;
   width: 289px;
   height: 385px;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   position: relative;
   border-radius: 0px;
 
@@ -103,5 +100,4 @@
   display: table-cell;
   height: 15px;
   vertical-align: middle;
-
 }
