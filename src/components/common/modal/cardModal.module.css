@@ -101,3 +101,15 @@
   height: 15px;
   vertical-align: middle;
 }
+.share_icon {
+  background-color: white;
+  font-family: pretendard;
+  color: #878787;
+  font-size: 12px;
+  display: table;
+  /* width: 20px;
+  height: 20px; */
+  border-radius: 500px;
+  margin-left: 206px;
+  /* margin-top: 5px; */
+}
