@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect} from "react";
 // import styles from "./calender.module.css";
 import styles from "./calendar.module.css";
 import moment from "moment";
@@ -10,6 +10,37 @@ import { GET_MYDATE } from "apollo/queries/mydata/mydate";
 import styled from "styled-components";
 
 const Calendar = (props) => {
+
+  const {loding, data, error} = useQuery(GET_MYDATE);
+  const [state, setState] = useState();
+
+//날짜 선택 시 상태
+ const [selectDate, setSelectDate] = useState(moment().format('D'));
+
+
+useEffect(() => {
+  if (data) {
+    setState(data)
+  }
+}, [data])
+
+console.log(state);
+const dateList = state && state["getMyDate"];
+console.log(dateList);
+
+//값이 있는지 확인하고 추출
+let dateLength = dateList && Object.keys(dateList).length
+console.log(dateLength);
+
+
+//아래 반복문 이용해서 api랑 비교하여 달력 구성
+    for (let i = 0; i <= dateLength; i++) {
+    let date = dateList[i];
+    console.log(date);
+  }
+
+
+
   const [getMoment, setMoment] = useState(moment());
   const today = getMoment; // today == moment()
 
@@ -20,63 +51,195 @@ const Calendar = (props) => {
       : today.clone().endOf("month").week(); //마지막주
   //53주 표현
 
+
+
   const dateState = props.dateState;
   const setDateState = props.setDateState;
   const setShowModal = props.setShowModal;
 
 
-  const calendarArr = () => {
-    let result = [];
-    let week = firstWeek;
-    for (week; week <= lastWeek; week++) {
-      //첫주에서 마지막주까지
-      result = result.concat(
-        <tr key={week}>
-          {Array(7)
-            .fill(0)
-            .map((data, index) => {
-              let days = today
-                .clone()
-                .startOf("year")
-                .week(week)
-                .startOf("week")
-                .add(index, "day");
+  const calendarArr=(dateList,dateLength)=>{
 
-              const OnLogDate = () => {
-                setDateState(days.format("YYYY.MM.DD"));
-                console.log(dateState);
-                setShowModal(false);
-              };
+        let result = [];
+        let week = firstWeek;
+        for ( week; week <= lastWeek; week++) { //첫주에서 마지막주까지
+          result = result.concat(
+            <tr key={week}>
+                {
+              Array(7).fill(0).map((data, index) => {
+                let days = today.clone().startOf('year').week(week).startOf('week').add(index, 'day');
+                
+                const OnLogDate =() => {
+                  setDateState(days.format('YYYY.MM.DD'));
+                  console.log(dateState); 
+                  setShowModal(false);
+                  //날짜 클릭시에 모달 끄는 함수
+                  //여기서 selectDate state도 같이 집어넣어주면 될 것 같은데
+                }
 
-              if (moment().format("YYYYMMDD") === days.format("YYYYMMDD")) {
-                return (
-                  <TodayButton key={index} onClick={OnLogDate}>
-                    <span>{days.format("D")}</span>
-                  </TodayButton>
-                );
-              } else if (days.format("MM") !== today.format("MM")) {
-                return (
-                  <button key={index} className={styles.notdays}>
-                    <span>{days.format("D")}</span>
-                  </button>
-                );
-              } else {
-                return (
-                  <DayButton
-                    key={index}
-                    className={styles.days}
-                    onClick={OnLogDate}
-                  >
-                    <span>{days.format("D")}</span>
-                  </DayButton>
-                );
-              }
-            })}
-        </tr>
-      );
-    }
-    return result;
-  };
+                
+
+
+
+
+                //클릭시 선택 날짜 state에 입력
+                const handleClickDate = (key) => {
+                    setSelectDate(key);
+
+                    setDateState(days.format('YYYY.MM.DD'));
+                    
+                    console.log('인덱스',index);
+                    console.log('일자',days.format('D'));
+                    //key는 운동인덱스였으니까 이 경우엔 버튼날짜인 days.format('YYYY.MM.DD') 사용하면 될것 같기도..
+                  };
+
+
+
+
+
+
+
+
+
+
+
+
+                //오늘 날짜와 출력하는 days 비교
+                if(moment().format('YYYYMMDD') === days.format('YYYYMMDD')){
+                   for (let i = 0; i <= dateLength; i++) {
+                    let date = dateList[i];
+                    if (JSON.stringify(date) === JSON.stringify(moment().format("YYYY.MM.DD"))){
+                      return(
+                        <button key={days.format('D')}
+                          isSelectedDate={selectDate ? "off" : "on"}
+                          onClick={() => handleClickDate(days.format('D'))}
+                          className={styles.reportdays}>
+                          <span>{days.format('D')}</span>
+                        </button>);
+                        // <Btn key={days.format('D')}
+                        //   isSelectedDate={selectDate ? "off" : "on"}
+                        //   onClick={() => handleClickDate(days.format('D'))}
+                        //   className={styles.reportdays}>
+                        //   <span>{days.format('D')}</span>
+                        // </Btn>);
+                    }
+                    
+                  }
+                  // for (let i = 0; i <= dateLength; i++) {
+                  //   let date = dateList[i];
+                  //   if (JSON.stringify(date) === JSON.stringify(moment().format('YYYYMMDD'))){
+                  //     return(
+                  //       <button key={index} className={styles.reportdays}>
+                  //         <span>{days.format('D')}</span>
+                  //       </button>);
+                  // }
+                  return(
+
+            //         <Btn
+            //   key={exercise.exerciseIndex}
+            //   // isSelectedExe={exercise.Index === selectExe ? "on" : "off"}
+            //   isSelectedExe={
+            //     exercise.exerciseIndex === selectExe ? "on" : "off"
+            //   }
+            //   onClick={() => handleClickExe(exercise.exerciseIndex)}
+            // >
+            //   {exercise.exerciseName}
+            // </Btn>
+                    
+                      // <TodayButton key={days.format('D')} onClick={OnLogDate}>
+                      //   <span>{days.format('D')}</span>
+                      // </TodayButton>
+
+
+                      //이게 당일날
+                      <Btn key={days.format('D')}
+                          isSelectedDate={selectDate==days.format('D') ? "on" : "off"}
+                          onClick={() => handleClickDate(days.format('D'))}
+                          className={styles.reportdays}>
+                          <span>{days.format('D')}</span>
+                        </Btn>
+                  );
+                }
+                else if(days.format('MM') !== today.format('MM')){
+                  for (let i = 0; i <= dateLength; i++) {
+                    let date = dateList[i];
+                    //기록된 날짜랑 같으면
+                    if (JSON.stringify(date) === JSON.stringify(days.format("YYYY.MM.DD"))){
+                      return(
+                        <button key={days.format('D')}
+                          onClick={() => handleClickDate(days.format('D'))}
+                         className={styles.reportdays}>
+                          <span>{days.format('D')}</span>
+                        </button>);
+                        // <Btn key={days.format('D')}
+                        //   isSelectedDate={selectDate ? "off" : "on"}
+                        //   onClick={() => handleClickDate(days.format('D'))}
+                        //  className={styles.reportdays}>
+                        //   <span>{days.format('D')}</span>
+                        // </Btn>);
+                    }
+
+                    console.log('done');
+                  }
+                  return(
+                      <button key={days.format('D')} className={styles.notdays}>
+                        <span>{days.format('D')}</span>
+                      </button>
+                      // <Btn key={index}
+                      // isSelectedDate={
+                      //     index === selectDate ? "on" : "off"
+                      //   }
+                      //   onClick={() => handleClickDate(index)}
+                      //  className={styles.notdays}>
+                      //   <span>{days.format('D')}</span>
+                      // </Btn>
+                  );
+                }else{
+                  
+                  for (let i = 0; i <= dateLength; i++) {
+                    let date = dateList[i];
+                    if (JSON.stringify(date) === JSON.stringify(days.format("YYYY.MM.DD"))){
+                      return(
+                        <button key={index}
+                        isSelectedDate={
+                          index === selectDate ? "on" : "off"
+                        }
+                        onClick={() => handleClickDate(index)}
+                         className={styles.reportdays}>
+                          <span>{days.format('D')}</span>
+                        </button>);
+                        // <Btn key={days.format('D')}
+                        // isSelectedDate={
+                        //   days.format('D') === selectDate ? "on" : "off"
+                        // }
+                        // onClick={() => handleClickDate(days.format('D'))}
+                        //  className={styles.reportdays}>
+                        //   <span>{days.format('D')}</span>
+                        // </Btn>);
+                    }
+                    console.log('done');
+                  }
+                  return(
+                      // <DayButton key={index} className={styles.days} onClick={OnLogDate}>
+                      //   <span>{days.format('D')}</span>
+                      // </DayButton>
+                      <Btn key={days.format('D')}
+                      isSelectedDate={
+                          days.format('D') === selectDate ? "on" : "off"
+                        }
+                        onClick={() => handleClickDate(days.format('D'))}
+                       className={styles.days} 
+                       >
+                        <span>{days.format('D')}</span>
+                      </Btn>
+                  );
+                }
+              })
+            }
+            </tr>);
+        }
+        return result;
+      }
 
   return (
     <div>
@@ -136,215 +299,13 @@ const Calendar = (props) => {
         <button className={styles.mondays}>토</button>
       </div>
       <table className={styles.container}>
-        <tbody>{calendarArr()}</tbody>
+        <tbody>{calendarArr(dateList, dateLength)}</tbody>
       </table>
     </div>
   );
 };
 export default Calendar;
 
-// const Calendar = (props) => {
-
-//   const [getMoment, setMoment] = useState(moment());
-//   const today = getMoment;    // today == moment()
-
-//   const firstWeek = today.clone().startOf('month').week();  //첫주
-//   const lastWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week();    //마지막주
-//   //53주 표현
-
-
-//   const dateState = props.dateState;
-//   const setDateState = props.setDateState;
-//   const setShowModal = props.setShowModal;
-
-
-//   // const mydate = props.mydate;
-//   // const setMydate = props.setMydate;
-
-//   // const mymydate = mydate;
-
-
-//   //1. useState로 값 관리
-//   //2. API로 받는 부분 함수 분리 -> useEffect() 함수 이용(초기렌더링때 받아옴) 
-//   const {data : dateList} = useQuery(GET_MYDATE);
-
-
-//   // const [dateList] = useQuery({
-//   //   query: GET_MYDATE,
-//   // });
-//   // if (loading) return 'Loading...';
-//   // if(error) return `Error! ${error.message}`;
-//     // const {data, fetching, error} = dateList;
-
-//     // console.log(data);
-//     console.log("dateList", dateList);
-
-
-//   const mymydate = dateList && dateList["getMyDate"];
-
-//   console.log("mymydate", mymydate);
-//   // console.log(mymydate.length);
-
-
-//   // const mymydate = data&&data["getMyDate"];
-//   // const mymydate = dateList && Object.values(dateList)[0]["getMyDate"];
-//   // const mymydate = 0;
-
-//   // const date = dateList&&dateList["getMyDate"];
-//   // console.log(dateList);
-
-//   // console.log(dateList["getMyDate"])
-
-//   const mydate = 0;
-
-
-//   // console.log(mymydate.length);
-
-
-//   // console.log(mydate.length);
-
-
-//   for (let i = 0; i <= mymydate.length; i++) {
-//     // let seoul = moment(mymydate[i]).tz("Asia/Seoul");
-//     let seoul = mymydate[i];
-//     console.log(seoul.format("YYYY.MM.DD"));
-//   }
-
-//    //버튼 선택
-// const [selectExe, setSelectExe] = useState(0);
-// const [click, setClick] = useState(0);
-
-//   const calendarArr=()=>{
-
-//       let result = [];
-//       let week = firstWeek;
-//       for ( week; week <= lastWeek; week++) { //첫주에서 마지막주까지
-//         result = result.concat(
-//           <tr key={week}>
-//               {
-//             Array(7).fill(0).map((data, index) => {
-//               let days = today.clone().startOf('year').week(week).startOf('week').add(index, 'day');
-              
-//               const OnLogDate =() => {
-//                 setDateState(days.format('YYYY.MM.DD'));
-//                 console.log(dateState);
-//                 setShowModal(false);
-//               }
-
-//               if(moment().format('YYYYMMDD') === days.format('YYYYMMDD')){
-//                 return(
-                  
-//                     <TodayButton key={index} onClick={OnLogDate}>
-//                       <span>{days.format('D')}</span>
-//                     </TodayButton>
-//                 );
-
-//               }else if(days.format('MM') !== today.format('MM')){
-//                 for (let i = 0; i <= mymydate.length; i++) {
-//                   let seoul = new Array();
-//                   seoul = moment(mymydate[i]).tz("Asia/Seoul");
-//                   let arr = seoul.format("YYYY.MM.DD");
-//                   // console.log(seoul.format("YYYY.MM.DD"));
-//                   if (JSON.stringify(arr) === JSON.stringify(days.format("YYYY.MM.DD"))){
-//                     return(
-//                       <button key={index} className={styles.reportdays}>
-//                         <span>{days.format('D')}</span>
-//                       </button>);
-//                   }
-//                 }
-//                 return(
-//                     <button key={index} className={styles.notdays}>
-//                       <span>{days.format('D')}</span>
-//                     </button>
-
-// // {isLoggedIn ? (
-// //   <Link to="/record/post">
-// //     <RecordBtn></RecordBtn>
-// //   </Link>
-// // ) : (
-// //   <div onClick={openModal}>
-// //     <RecordBtn></RecordBtn>
-// //   </div>
-// // )}
-//                 );
-//               }else{
-                
-//                 for (let i = 0; i <= mymydate.length; i++) {
-//                   let seoul = new Array();
-//                   seoul = moment(mymydate[i]).tz("Asia/Seoul");
-//                   let arr = seoul.format("YYYY.MM.DD");
-//                   // console.log(seoul.format("YYYY.MM.DD"));
-//                   if (JSON.stringify(arr) === JSON.stringify(days.format("YYYY.MM.DD"))){
-//                     return(
-//                       <button key={index} className={styles.reportdays}>
-//                         <span>{days.format('D')}</span>
-//                       </button>);
-//                   }
-//                 }
-//                 return(
-//                     <DayButton key={index} className={styles.days} onClick={OnLogDate}>
-//                       <span>{days.format('D')}</span>
-//                     </DayButton>
-//                 );
-//               }
-//             })
-//           }
-//           </tr>);
-//       }
-//       return result;
-//     }
-
-
-//   return (
-//       <div>
-        
-
-//           <div className={styles.body}>
-//         <div onClick={() => { setMoment(getMoment.clone().subtract(1, 'month')) }}>
-//         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-//           <path d="M12.5 15.5L7 10L12.5 4.5" stroke="#474747" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-//         </svg>
-//       </div>
-//       <span className={styles.font}>{today.format("YYYY.MM ")}</span>
-
-//       <div
-//         onClick={() => {
-//           setMoment(getMoment.clone().add(1, "month"));
-//         }}
-//       >
-//         <svg
-//           width="20"
-//           height="20"
-//           viewBox="0 0 20 20"
-//           fill="none"
-//           xmlns="http://www.w3.org/2000/svg"
-//         >
-//           <path
-//             d="M7.5 4.5L13 10L7.5 15.5"
-//             stroke="#C5C5C5"
-//             strokeWidth="2"
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//           />
-//         </svg>
-//       </div>
-//     </div>
-//     <div>
-//       <button className={styles.mondays}>일</button>
-//       <button className={styles.mondays}>월</button>
-//       <button className={styles.mondays}>화</button>
-//       <button className={styles.mondays}>수</button>
-//       <button className={styles.mondays}>목</button>
-//       <button className={styles.mondays}>금</button>
-//       <button className={styles.mondays}>토</button>
-//     </div>
-//     <table className={styles.container}>
-//       <tbody>{calendarArr()}</tbody>
-//     </table>
-//   </div>
-// );
-// };
-// export default Calendar;
 
 const DayButton = styled.button`
   height: 2.2rem;
@@ -375,4 +336,23 @@ const TodayButton = styled.button`
     background-color: white;
     color: #474747;
   }
+`;
+
+
+
+const Btn = styled.button`
+  margin-right: 2%;
+  margin-bottom: 1.5%;
+  margin-top: 1.5%;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-size: 0.85rem;
+  background-color: ${(props) =>
+    props.isSelectedDate === "on" ? "#00bee6" : "white"};
+
+    ${(props) => (props.isSelectedDate === "on" ? "white" : "#c5c5c5")};
+  border-radius: 28px;
+  height: 1.8rem;
+  box-shadow: none;
+  color: ${(props) => (props.isSelectedDate === "on" ? "white" : "#474747")};
 `;

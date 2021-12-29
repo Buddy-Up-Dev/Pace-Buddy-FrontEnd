@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./calendarbar.module.css";
 import Calendar from "./calendar";
 import moment from "moment";
@@ -10,10 +10,48 @@ import { DropDown } from "../../common/icon/icons";
 import { GoBack } from "../../common/icon/icons";
 import { useHistory } from "react-router";
 
+
+
+import { useQuery } from "@apollo/client";
+import { GET_MYDATE } from "apollo/queries/mydata/mydate";
+
 function CalendarBar(props) {
   const [todayDate, setTodayDate] = useState(0);
   const [getMoment, setMoment] = useState(moment());
   const [showModal, setShowModal] = useState(false);
+  /////////////////////////////////////////////////////////////////////////////
+
+
+//   const {loding, data, error} = useQuery(GET_MYDATE);
+//   const [state, setState] = useState([]);
+
+//   useEffect(() => {
+//   console.log('렌더링이 완료되었습니다!');
+//   // do some checking here to ensure data exist
+//   if (data) {
+//     // mutate data if you need to
+//     setState(data)
+//   }
+
+//   //     for (let i = 0; i <= Object.keys(state).length; i++) {
+//   //   // let seoul = moment(mymydate[i]).tz("Asia/Seoul");
+//   //   let date = state[i];
+//   //   console.log(date);
+//   // }
+//   // // else (data === null) {return null};
+// }, [data])
+// ///////////////////////////////////////////////////////////////////////////
+
+
+///state에 저장 됐는데...
+// console.log(state);
+// console.log(typeof(state));
+// const dateList = state && state["getMyDate"];
+
+// console.log(dateList);
+// console.log(typeof(dateList));
+// console.log(dateList.length);
+
 
   const history = useHistory();
 
