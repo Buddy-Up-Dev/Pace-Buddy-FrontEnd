@@ -15,10 +15,10 @@ import { GET_NICKNAME } from "./../../../apollo/queries/users/users";
 function ReportContent() {
   const reports = useQuery(GET_MY_REPORT);
   const nick = useQuery(GET_NICKNAME);
-  console.log(nick.data);
-  console.log(reports.data);
+  console.log(nick?.data);
+  console.log(reports?.data);
   // console.log(reports.data["reporting"]);
-  if (reports.loading) {
+  if (reports?.loading) {
     return <></>;
   } else {
     return (
@@ -28,7 +28,7 @@ function ReportContent() {
 
         {/* 추후 받아오는 결과 값에 다라 바뀌는 멘트 */}
         <div className={styles.changement}>
-          {reports.data["reporting"].conditionMent}
+          {reports?.data["reporting"]?.conditionMent}
         </div>
 
         <div className={styles.emptyimg}>
@@ -47,15 +47,15 @@ function ReportContent() {
 
         <div className={styles.report_comment_box}>
           <div className={styles.report_comment_line}>
-            <span>{nick.data["userNickname"]}님이</span>
+            <span>{nick?.data["userNickname"]}님이</span>
           </div>
           <div className={styles.report_comment_line}>
             <span>최근 가장 많이 한 운동은 </span>
-            <span>{reports.data["reporting"].exerciseName}</span>
+            <span>{reports?.data["reporting"]?.exerciseName}</span>
             <span>에요!</span>
           </div>
           <div className={styles.report_comment_line}>
-            <span>운동을 {reports.data["reporting"].exerciseType}</span>
+            <span>운동을 {reports?.data["reporting"]?.exerciseType}</span>
           </div>
         </div>
       </div>
