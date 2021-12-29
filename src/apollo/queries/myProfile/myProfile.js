@@ -14,3 +14,8 @@ export const UPLOAD_PROFILE = gql`
     uploadProfile(imgURL: $imgURL)
   }
 `;
+export const DELETE_USER = gql`
+  mutation deleteUser {
+    deleteUser
+  }
+`;

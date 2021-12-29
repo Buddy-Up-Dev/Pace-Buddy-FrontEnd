@@ -30,7 +30,6 @@ const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
     }
   };
 
-  //모달 여는거
   const openModal = () => {
     setShowModal(true);
     console.log(showModal);
@@ -82,7 +81,7 @@ const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
             content={post.content}
             condition={post.condition}
             exercise={post.exercise}
-            setShowModal={setShowModal} //여기서 모달을.. 켜는데..
+            setShowModal={setShowModal}
             handleLikeToggle={handleLikeToggle}
             isLiked={isLiked}
             likeCount={likeCount}

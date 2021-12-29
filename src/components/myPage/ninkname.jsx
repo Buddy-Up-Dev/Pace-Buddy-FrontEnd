@@ -15,7 +15,7 @@ function Nickname() {
         <div className={styles.main_ment}>뭐라고 부르면 될까요?</div>
 
         <section className={styles.element_section}>
-          <div className={styles.element}></div>
+          <input className={styles.element}></input>
 
           <div className={styles.text_ment}>10자 이내로 만들 수 있어요.</div>
 
