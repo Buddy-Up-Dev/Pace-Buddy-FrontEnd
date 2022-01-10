@@ -9,37 +9,59 @@ import { GET_MYDATE } from "apollo/queries/mydata/mydate";
 
 import styled from "styled-components";
 
-const Calendar = (props) => {
+
+// const Calendar = (props) => {
+function Calendar(props) {
+  ///캘린더바에서 받아온 props
+  const dateState = props.dateState;
+  const setDateState = props.setDateState;
+  const setShowModal = props.setShowModal;
 
   const {loding, data, error} = useQuery(GET_MYDATE);
   const [state, setState] = useState();
 
-//날짜 선택 시 상태
- const [selectDate, setSelectDate] = useState(moment().format('D'));
+  //날짜 선택 시 상태
+  const [selectDate, setSelectDate] = useState(dateState);
 
 
-useEffect(() => {
-  if (data) {
-    setState(data)
-  }
-}, [data])
+  useEffect(() => {
 
-console.log(state);
-const dateList = state && state["getMyDate"];
-console.log(dateList);
+    if (data) {
+      setState(data)
+    }
+    
 
-//값이 있는지 확인하고 추출
-let dateLength = dateList && Object.keys(dateList).length
-console.log(dateLength);
+  }, [data])
 
+  console.log(state);
+  const dateList = state && state["getMyDate"];
+  console.log(dateList);
+  console.log('데이터레스트 타입',typeof(dateList));
 
-//아래 반복문 이용해서 api랑 비교하여 달력 구성
-    for (let i = 0; i <= dateLength; i++) {
-    let date = dateList[i];
-    console.log(date);
-  }
+  //값이 있는지 확인하고 추출
+  const dateLength = dateList && Object.keys(dateList).length
+  console.log('데이터 길이', dateLength);
 
+  // 아래 for문에서 dateLength랑 date가 undefined
+  // for (let i = dateLength; i >-1; i--) { //최근 날짜에서 먼날짜까지 반복문
+  //   // let cont = state && state["getMyDate"];
+  //   let date = dateList[i];
+  //   console.log('반복문 안의 기록 날짜이다', date);
 
+  //   if (date == dateState){
+  //     let momentDate = moment(dateState, 'YYYY.MM.DD').subtract(1, "days");
+
+  //     let redirectDate = momentDate.format('YYYY.MM.DD')
+  //     console.log('깎아낸 문자열 이다', redirectDate);
+
+  //     setDateState(redirectDate);
+  //   }
+  //   else {
+  //     break;
+  //   }
+  // }
+
+  console.log('초기 날짜',dateState); //string임
 
   const [getMoment, setMoment] = useState(moment());
   const today = getMoment; // today == moment()
@@ -53,12 +75,9 @@ console.log(dateLength);
 
 
 
-  const dateState = props.dateState;
-  const setDateState = props.setDateState;
-  const setShowModal = props.setShowModal;
-
 
   const calendarArr=(dateList,dateLength)=>{
+        
 
         let result = [];
         let week = firstWeek;
@@ -90,72 +109,60 @@ console.log(dateLength);
                     
                     console.log('인덱스',index);
                     console.log('일자',days.format('D'));
+                    console.log('선택날짜',dateState);
                     //key는 운동인덱스였으니까 이 경우엔 버튼날짜인 days.format('YYYY.MM.DD') 사용하면 될것 같기도..
                   };
 
 
 
 
-
-
-
-
-
-
-
-
-                //오늘 날짜와 출력하는 days 비교
-                if(moment().format('YYYYMMDD') === days.format('YYYYMMDD')){
-                   for (let i = 0; i <= dateLength; i++) {
+///////////////////////////////////////////////////////////////
+                // 아래 for문에서 dateLength랑 date가 undefined
+                if(dateState){
+                  console.log(dateState);
+                  console.log(dateLength);
+                  console.log(dateList);
+                  
+                  //왜 밑에 반복문에서는 되느데 이 반복문에서만 안되냔 말이ㅑㅇ
+                  for (let i = dateLength; i >-1; i--) { //최근 날짜에서 먼날짜까지 반복문
+                    // let cont = state && state["getMyDate"];
                     let date = dateList[i];
-                    if (JSON.stringify(date) === JSON.stringify(moment().format("YYYY.MM.DD"))){
-                      return(
-                        <button key={days.format('D')}
-                          isSelectedDate={selectDate ? "off" : "on"}
-                          onClick={() => handleClickDate(days.format('D'))}
-                          className={styles.reportdays}>
-                          <span>{days.format('D')}</span>
-                        </button>);
-                        // <Btn key={days.format('D')}
-                        //   isSelectedDate={selectDate ? "off" : "on"}
-                        //   onClick={() => handleClickDate(days.format('D'))}
-                        //   className={styles.reportdays}>
-                        //   <span>{days.format('D')}</span>
-                        // </Btn>);
+                    console.log('반복문 안의 기록 날짜이다', dateList[i]);
+
+                    if (date == dateState){
+                      let momentDate = moment(dateState, 'YYYY.MM.DD').subtract(1, "days");
+
+                      let redirectDate = momentDate.format('YYYY.MM.DD')
+                      console.log('깎아낸 문자열 이다', redirectDate);
+
+                      setDateState(redirectDate);
                     }
-                    
+                    else {
+                      break;
+                    }
                   }
-                  // for (let i = 0; i <= dateLength; i++) {
-                  //   let date = dateList[i];
-                  //   if (JSON.stringify(date) === JSON.stringify(moment().format('YYYYMMDD'))){
-                  //     return(
-                  //       <button key={index} className={styles.reportdays}>
-                  //         <span>{days.format('D')}</span>
-                  //       </button>);
-                  // }
+                }
+              
+/////////////////////////////////////////////////////////////////////
+
+
+
+
+                //오늘 날짜와 출력하는 days 비교해서 캘린더 컴포넌트 생성시에 당일 효과 넣음
+                //여기를 바꿔야 
+                // if(moment().format('YYYYMMDD') === days.format('YYYYMMDD')){
+                  //당일날이 아니라 캘린더 바에 표시되는 날짜로 비교하기 -> 캘린더 바에는 처음에 당일을 표시하므로 초기 당일체크는 당연히 됌
+                if(dateState === days.format('YYYY.MM.DD')){
+
+                    console.log('바 날짜비교가 되었습니다')
+
                   return(
-
-            //         <Btn
-            //   key={exercise.exerciseIndex}
-            //   // isSelectedExe={exercise.Index === selectExe ? "on" : "off"}
-            //   isSelectedExe={
-            //     exercise.exerciseIndex === selectExe ? "on" : "off"
-            //   }
-            //   onClick={() => handleClickExe(exercise.exerciseIndex)}
-            // >
-            //   {exercise.exerciseName}
-            // </Btn>
-                    
-                      // <TodayButton key={days.format('D')} onClick={OnLogDate}>
-                      //   <span>{days.format('D')}</span>
-                      // </TodayButton>
-
 
                       //이게 당일날
                       <Btn key={days.format('D')}
-                          isSelectedDate={selectDate==days.format('D') ? "on" : "off"}
+                          isSelectedDate={selectDate==days.format('D') ? "on" : "on"}
                           onClick={() => handleClickDate(days.format('D'))}
-                          className={styles.reportdays}>
+                         >
                           <span>{days.format('D')}</span>
                         </Btn>
                   );
@@ -167,16 +174,9 @@ console.log(dateLength);
                     if (JSON.stringify(date) === JSON.stringify(days.format("YYYY.MM.DD"))){
                       return(
                         <button key={days.format('D')}
-                          onClick={() => handleClickDate(days.format('D'))}
                          className={styles.reportdays}>
                           <span>{days.format('D')}</span>
                         </button>);
-                        // <Btn key={days.format('D')}
-                        //   isSelectedDate={selectDate ? "off" : "on"}
-                        //   onClick={() => handleClickDate(days.format('D'))}
-                        //  className={styles.reportdays}>
-                        //   <span>{days.format('D')}</span>
-                        // </Btn>);
                     }
 
                     console.log('done');
@@ -185,18 +185,13 @@ console.log(dateLength);
                       <button key={days.format('D')} className={styles.notdays}>
                         <span>{days.format('D')}</span>
                       </button>
-                      // <Btn key={index}
-                      // isSelectedDate={
-                      //     index === selectDate ? "on" : "off"
-                      //   }
-                      //   onClick={() => handleClickDate(index)}
-                      //  className={styles.notdays}>
-                      //   <span>{days.format('D')}</span>
-                      // </Btn>
                   );
-                }else{
-                  
+
+
+
+                }else if(moment().format('YYYY.MM.DD') < days.format('YYYY.MM.DD')){
                   for (let i = 0; i <= dateLength; i++) {
+                  // for (let i = dateLength; i >-1; i--){
                     let date = dateList[i];
                     if (JSON.stringify(date) === JSON.stringify(days.format("YYYY.MM.DD"))){
                       return(
@@ -204,25 +199,43 @@ console.log(dateLength);
                         isSelectedDate={
                           index === selectDate ? "on" : "off"
                         }
-                        onClick={() => handleClickDate(index)}
                          className={styles.reportdays}>
                           <span>{days.format('D')}</span>
                         </button>);
-                        // <Btn key={days.format('D')}
-                        // isSelectedDate={
-                        //   days.format('D') === selectDate ? "on" : "off"
-                        // }
-                        // onClick={() => handleClickDate(days.format('D'))}
-                        //  className={styles.reportdays}>
-                        //   <span>{days.format('D')}</span>
-                        // </Btn>);
+                    }
+                    console.log('asdfasdfdone');
+                  }
+                  return(
+                      <Btn key={days.format('D')}
+                      isSelectedDate={
+                          days.format('D') === selectDate ? "on" : "off"
+                        }
+                       className={styles.days} 
+                       >
+                        <span>{days.format('D')}</span>
+                      </Btn>
+                  );
+
+
+
+                }else{
+                  
+                  for (let i = 0; i <= dateLength; i++) {
+                  // for (let i = dateLength; i >-1; i--){
+                    let date = dateList[i];
+                    if (JSON.stringify(date) === JSON.stringify(days.format("YYYY.MM.DD"))){
+                      return(
+                        <button key={index}
+                        isSelectedDate={
+                          index === selectDate ? "on" : "off"
+                        }
+                         className={styles.reportdays}>
+                          <span>{days.format('D')}</span>
+                        </button>);
                     }
                     console.log('done');
                   }
                   return(
-                      // <DayButton key={index} className={styles.days} onClick={OnLogDate}>
-                      //   <span>{days.format('D')}</span>
-                      // </DayButton>
                       <Btn key={days.format('D')}
                       isSelectedDate={
                           days.format('D') === selectDate ? "on" : "off"
@@ -341,18 +354,19 @@ const TodayButton = styled.button`
 
 
 const Btn = styled.button`
-  margin-right: 2%;
-  margin-bottom: 1.5%;
-  margin-top: 1.5%;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   font-family: Noto Sans KR;
   font-style: normal;
   font-size: 0.85rem;
+  border: none;
+  width: 30px;
+  height: 30px;
   background-color: ${(props) =>
     props.isSelectedDate === "on" ? "#00bee6" : "white"};
-
-    ${(props) => (props.isSelectedDate === "on" ? "white" : "#c5c5c5")};
-  border-radius: 28px;
-  height: 1.8rem;
+  border-radius: 50%;
   box-shadow: none;
   color: ${(props) => (props.isSelectedDate === "on" ? "white" : "#474747")};
 `;

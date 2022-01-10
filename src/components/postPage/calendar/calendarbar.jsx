@@ -15,43 +15,11 @@ import { useHistory } from "react-router";
 import { useQuery } from "@apollo/client";
 import { GET_MYDATE } from "apollo/queries/mydata/mydate";
 
+//구조분해 할당 필요
 function CalendarBar(props) {
   const [todayDate, setTodayDate] = useState(0);
   const [getMoment, setMoment] = useState(moment());
   const [showModal, setShowModal] = useState(false);
-  /////////////////////////////////////////////////////////////////////////////
-
-
-//   const {loding, data, error} = useQuery(GET_MYDATE);
-//   const [state, setState] = useState([]);
-
-//   useEffect(() => {
-//   console.log('렌더링이 완료되었습니다!');
-//   // do some checking here to ensure data exist
-//   if (data) {
-//     // mutate data if you need to
-//     setState(data)
-//   }
-
-//   //     for (let i = 0; i <= Object.keys(state).length; i++) {
-//   //   // let seoul = moment(mymydate[i]).tz("Asia/Seoul");
-//   //   let date = state[i];
-//   //   console.log(date);
-//   // }
-//   // // else (data === null) {return null};
-// }, [data])
-// ///////////////////////////////////////////////////////////////////////////
-
-
-///state에 저장 됐는데...
-// console.log(state);
-// console.log(typeof(state));
-// const dateList = state && state["getMyDate"];
-
-// console.log(dateList);
-// console.log(typeof(dateList));
-// console.log(dateList.length);
-
 
   const history = useHistory();
 
@@ -73,13 +41,8 @@ function CalendarBar(props) {
         <div className={styles.goback} onClick={GoBackClick}>
           <GoBack></GoBack>
         </div>
-        {/* 캘린더 모달 */}
-        {/* {showModal ? (
-          <CalendarModal
-            setShowModal={setShowModal}
-          />
-        ) : null} */}
-        {/* <div className={sidebarClasses}>  */}
+
+        {/* 캘린더모달 */}
         {showModal ? (
           <Modal
             dateState={dateState}
@@ -88,7 +51,7 @@ function CalendarBar(props) {
           />
         ) : null}
         <DateButton onClick={openModal}>
-          {/* <span>{today.format('YYYY.MM.DD')}</span> */}
+          {/* 캘린더에서 dateState에 today.format('YYYY.MM.DD') 값 넣어줌 */}
           <span>{dateState}</span>
           <DropButton onClick={openModal}>
             <DropDown></DropDown>

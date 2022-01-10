@@ -20,7 +20,7 @@
 }
 
 .notdays {
-    font-family: pretendard;
+    /* font-family: pretendard;
     height: 2.2rem;
     width: 10%;
     color:#C5C5C5;
@@ -28,7 +28,18 @@
     border-radius: 100px;
     margin-left: 2%;
     margin-right: 2%;
-    margin-bottom:1%;
+    margin-bottom:1%; */
+    color:#C5C5C5;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 1.5%;
+    margin-top: 2%;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-size: 0.85rem;
+    border: none;
+    width: 30px;
+    height: 30px;
     
     background-color: white;
 }
