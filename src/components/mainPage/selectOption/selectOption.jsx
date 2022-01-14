@@ -21,7 +21,6 @@ const SelectOption = memo(() => {
   const { data: exeList } = useQuery(GET_EXERCISES);
   const [off, setOff] = useState(0);
   const [dat, setDat] = useState([]);
-  console.log(selectExe, sortByFlag);
   // const [post, setPost] = useState([]);
   // setPost([...post]);
 
@@ -37,7 +36,7 @@ const SelectOption = memo(() => {
   // useEffect(() => {
   //   setDat(data);
   // }, [data]);
-
+  //console.log(data && data);
   const exercises = exeList && exeList["getExercise"];
   const postData = data && Object.values(data)[0]["PostData"];
 
@@ -64,7 +63,7 @@ const SelectOption = memo(() => {
   const handleClickExe = (key) => {
     setSelectExe(key);
   };
-  console.log(networkStatus, NetworkStatus);
+
   if (networkStatus === NetworkStatus.loading) {
     return <div>Loading...</div>;
   }
@@ -124,19 +123,18 @@ const SelectOption = memo(() => {
                 variables: {
                   offset: off,
                 },
-                updateQuery: (prev, { fetchMoreResult }) => {
-                  const prevPost = prev && Object.values(prev)[0]["PostData"];
-                  const fetchPost =
-                    fetchMoreResult &&
-                    Object.values(fetchMoreResult)[0]["PostData"];
-                  console.log("prev", prevPost, fetchMoreResult);
-                  console.log([...fetchPost, ...prevPost]);
-                  if (!fetchMoreResult) return prev;
-                  return Object.assign({}, prev, {
-                    post: [...fetchPost, ...prevPost],
-                  });
-                  console.log(data);
-                },
+                // updateQuery: (prev, { fetchMoreResult }) => {
+                //   const prevPost = prev && Object.values(prev)[0]["PostData"];
+                //   const fetchPost =
+                //     fetchMoreResult &&
+                //     Object.values(fetchMoreResult)[0]["PostData"];
+                //   console.log("prev", prevPost, fetchMoreResult);
+                //   console.log([...fetchPost, ...prevPost]);
+                //   if (!fetchMoreResult) return prev;
+                //   return Object.assign({}, prev, {
+                //     post: [...fetchPost, ...prevPost],
+                //   });
+                // },
               });
             }
           }}

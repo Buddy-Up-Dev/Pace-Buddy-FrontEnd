@@ -18,7 +18,35 @@ const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        post: offsetLimitPagination(),
+        getAllLatestPost: {
+          keyArgs: false,
+          merge: (existing = [], incoming, { args }) => {
+            console.log(existing["Post"]);
+
+            const offset = args?.offset || 0;
+            //console.log(
+            //  "MERGE",
+            //  offset,
+            //  existing?.map(({ __ref }) => __ref),
+            //  incoming.map(({ __ref }) => __ref));
+            return !offset
+              ? incoming["PostData"]
+              : [existing["PostData"], incoming["PostData"]];
+          },
+        },
+        // resourceCollection: offsetLimitPagination(),
+        // keyArgs: false,
+        // merge(existing, incoming) {
+        //   if (!incoming) return existing;
+        //   if (!existing) return incoming; // existing will be empty the first time
+
+        //   const { items, ...rest } = incoming;
+
+        //   let result = rest;
+        //   result.items = [...existing.items, ...items]; // Merge existing items with the items from incoming
+        //   console.log(result);
+        //   return result;
+        // },
       },
     },
   },
@@ -26,7 +54,6 @@ const cache = new InMemoryCache({
 //const cache = new InMemoryCache();
 const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem("Token");
-  console.log(token);
   if (token) {
     operation.setContext({
       headers: {
