@@ -12,8 +12,8 @@
   /* 2열 정렬 */
   grid-template-columns: 50% 50%;
 
-  grid-column-gap:3px;
-
+  grid-column-gap: 3px;
+  overflow-y: scroll;
   flex-wrap: wrap;
   list-style: none;
   padding-left: 0%;

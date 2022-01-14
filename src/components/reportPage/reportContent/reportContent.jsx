@@ -27,10 +27,11 @@ function ReportContent() {
         <div className={styles.onement}>버디의 한 마디</div>
 
         {/* 추후 받아오는 결과 값에 다라 바뀌는 멘트 */}
-        <div className={styles.changement}>
-          {reports?.data["reporting"]?.conditionMent}
-        </div>
-
+        {reports.data.reportExist ? (
+          <div className={styles.changement}>
+            {reports?.data["reporting"].conditionMent}
+          </div>
+        ) : null}
         <div className={styles.emptyimg}>
           <ReportIMG></ReportIMG>
         </div>
@@ -44,20 +45,21 @@ function ReportContent() {
             <ToReportButton></ToReportButton>
           </Link>
         </div>
-
-        <div className={styles.report_comment_box}>
-          <div className={styles.report_comment_line}>
-            <span>{nick?.data["userNickname"]}님이</span>
+        {reports.data.reportExist ? (
+          <div className={styles.report_comment_box}>
+            <div className={styles.report_comment_line}>
+              <span>{nick?.data["userNickname"]}님이</span>
+            </div>
+            <div className={styles.report_comment_line}>
+              <span>최근 가장 많이 한 운동은 </span>
+              <span>{reports?.data["reporting"].exerciseName}</span>
+              <span>에요!</span>
+            </div>
+            <div className={styles.report_comment_line}>
+              <span>운동을 {reports?.data["reporting"].exerciseType}</span>
+            </div>
           </div>
-          <div className={styles.report_comment_line}>
-            <span>최근 가장 많이 한 운동은 </span>
-            <span>{reports?.data["reporting"]?.exerciseName}</span>
-            <span>에요!</span>
-          </div>
-          <div className={styles.report_comment_line}>
-            <span>운동을 {reports?.data["reporting"]?.exerciseType}</span>
-          </div>
-        </div>
+        ) : null}
       </div>
     );
   }

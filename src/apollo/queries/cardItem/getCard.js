@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_ALL_CARD = gql`
-  query getAllCard($flag: Int!) {
-    getAllLatestPost(flag: $flag) {
+  query getAllCard($flag: Int!, $offset: Int) {
+    getAllLatestPost(flag: $flag, offset: $offset) {
       PostData {
         Post {
           postIndex
