@@ -13,6 +13,7 @@ import {
 import NullPage from "components/common/feedPage/nullPage";
 import Load from "../../common/loader/loader";
 import InView from "react-intersection-observer";
+import CardItem from "./../../common/cardItem/cardItem";
 
 const SelectOption = memo(() => {
   const [sortByFlag, setSortByFlag] = useState(0);
@@ -20,45 +21,19 @@ const SelectOption = memo(() => {
   const [fullyLoaded, setFullyLoaded] = useState(false);
   const { data: exeList } = useQuery(GET_EXERCISES);
   const [off, setOff] = useState(0);
-  const [dat, setDat] = useState([]);
-  // const [post, setPost] = useState([]);
-  // setPost([...post]);
 
   const { loading, error, data, networkStatus, fetchMore, variables } =
     useQuery(selectExe ? GET_OPTIONAL_CARD : GET_ALL_CARD, {
       variables: selectExe
         ? { flag: sortByFlag, exercise: selectExe }
-        : { flag: sortByFlag, offset: off },
+        : { flag: sortByFlag, offset: 0 },
       notifyOnNetworkStatusChange: true,
     });
+  console.log(data);
 
-  // const postData = data && Object.values(data)[0]["PostData"];
-  // useEffect(() => {
-  //   setDat(data);
-  // }, [data]);
-  //console.log(data && data);
   const exercises = exeList && exeList["getExercise"];
   const postData = data && Object.values(data)[0]["PostData"];
-
-  // const loadMore = () => {
-  //   setOff(off + 6);
-  //   fetchMore({
-  //     variables: {
-  //       offset: off,
-  //     },
-  //     updateQuery: (prev, { fetchMoreResult }) => {
-  //       const prevPost = prev && Object.values(prev)[0]["PostData"];
-  //       const fetchPost =
-  //         fetchMoreResult && Object.values(fetchMoreResult)[0]["PostData"];
-  //       console.log("prev", prevPost, fetchMoreResult);
-  //       console.log([...fetchPost, ...prevPost]);
-  //       if (!fetchMoreResult) return prev;
-  //       return Object.assign({}, prev, {
-  //         data: [...fetchPost, ...prevPost],
-  //       });
-  //     },
-  //   });
-  // };
+  const likeArray = data && Object.values(data)[0]["likeArray"];
 
   const handleClickExe = (key) => {
     setSelectExe(key);
@@ -114,27 +89,22 @@ const SelectOption = memo(() => {
         </div>
       </section>
       <section className={styles.section}>
-        <CardList data={data} />
+        <ul className={styles.cardList}>
+          {postData?.map((card) => (
+            <CardItem
+              key={card["Post"].postIndex}
+              card={card}
+              likeArray={likeArray}
+            />
+          ))}
+        </ul>
         <InView
           onChange={async (inView) => {
             if (inView) {
-              setOff(off + 6);
               const result = await fetchMore({
                 variables: {
-                  offset: off,
+                  offset: off + 6,
                 },
-                // updateQuery: (prev, { fetchMoreResult }) => {
-                //   const prevPost = prev && Object.values(prev)[0]["PostData"];
-                //   const fetchPost =
-                //     fetchMoreResult &&
-                //     Object.values(fetchMoreResult)[0]["PostData"];
-                //   console.log("prev", prevPost, fetchMoreResult);
-                //   console.log([...fetchPost, ...prevPost]);
-                //   if (!fetchMoreResult) return prev;
-                //   return Object.assign({}, prev, {
-                //     post: [...fetchPost, ...prevPost],
-                //   });
-                // },
               });
             }
           }}

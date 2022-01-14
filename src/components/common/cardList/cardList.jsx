@@ -12,7 +12,7 @@ function CardList({ data, loadMore }) {
   } = useQuery(IS_LOGGED_IN);
   const postData = data && Object.values(data)[0]["PostData"];
   const likeArray = data && Object.values(data)[0]["likeArray"];
-
+  console.log(data);
   // console.log(onLoadMore);
   // const [post, setPost] = useState(postData);
   // setPost([...post, ...postData]);

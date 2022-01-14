@@ -75,3 +75,21 @@
 .sort-flag-on {
   color: #00bee6;
 }
+.cardList {
+  /* 그리드 정렬 */
+  display: grid;
+  /* 2열 정렬 */
+  grid-template-columns: 50% 50%;
+
+  grid-column-gap: 3px;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0%;
+  margin-top: 0%;
+}
+
+.card {
+  /* height: max-content; */
+  height: 100%;
+}

@@ -19,34 +19,15 @@ const cache = new InMemoryCache({
     Query: {
       fields: {
         getAllLatestPost: {
-          keyArgs: false,
+          resourceCollection: offsetLimitPagination(),
+          keyArgs: ["PostData"],
           merge: (existing = [], incoming, { args }) => {
-            console.log(existing["Post"]);
-
             const offset = args?.offset || 0;
-            //console.log(
-            //  "MERGE",
-            //  offset,
-            //  existing?.map(({ __ref }) => __ref),
-            //  incoming.map(({ __ref }) => __ref));
             return !offset
               ? incoming["PostData"]
-              : [existing["PostData"], incoming["PostData"]];
+              : [...existing, ...incoming["PostData"]];
           },
         },
-        // resourceCollection: offsetLimitPagination(),
-        // keyArgs: false,
-        // merge(existing, incoming) {
-        //   if (!incoming) return existing;
-        //   if (!existing) return incoming; // existing will be empty the first time
-
-        //   const { items, ...rest } = incoming;
-
-        //   let result = rest;
-        //   result.items = [...existing.items, ...items]; // Merge existing items with the items from incoming
-        //   console.log(result);
-        //   return result;
-        // },
       },
     },
   },
